@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>El Coleccionista · Tienda</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Caveat:wght@500&amp;family=Inter:wght@400;500;600&amp;family=Pixelify+Sans:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#07122D}
+a{color:#F7F4E8}a:hover{color:#FFC632}
+.lift{transition:transform .15s ease}.lift:hover{transform:translateY(-4px)}
+.navlink{color:#F7F4E8;text-decoration:none}.navlink:hover{color:#FFC632}
+input::placeholder{color:#8993A3}
+.chk{accent-color:#F7F4E8;width:18px;height:18px}
+</style>
+</helmet>
+<div style="background: #07122D; color: #F7F4E8; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.5; min-height: 100vh">
+
+  <div style="background: #101E45; padding: 8px 24px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">
+    <span>CADA TARJETA TIENE UNA HISTORIA</span>
+    <span>SÍGUENOS EN @ELCOLECCIONISTACOM</span>
+  </div>
+
+  <header style="border-bottom: 1px solid rgba(137,147,163,0.35)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 32px; flex-wrap: wrap">
+      <a href="Main.dc.html" aria-label="El Coleccionista, inicio" style="display: block; line-height: 0">
+        <img src="/_blob/5191c3ffe6d040bf6d38cdea2becd1dc" alt="El Coleccionista · Tarjetas de fútbol" style="height: 72px; width: auto">
+      </a>
+      <nav aria-label="Principal" style="display: flex; gap: 28px; flex-wrap: wrap; font-weight: 600; font-size: 15px">
+        <a class="navlink" href="Catalogo.dc.html" aria-current="page" style="border-bottom: 2px solid #F7F4E8">Tienda</a>
+        <a class="navlink" href="Catalogo.dc.html">Tarjetas sueltas</a>
+        <a class="navlink" href="Main.dc.html#cajas">Cajas con hits</a>
+        <a class="navlink" href="Main.dc.html#aprende">Aprende</a>
+        <a class="navlink" href="Main.dc.html#vending">Vending</a>
+      </nav>
+      <div style="flex: 1 1 200px; display: flex; justify-content: flex-end; align-items: center; gap: 12px">
+        <label for="buscar-tienda" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Buscar</label>
+        <div style="display: flex; align-items: center; gap: 8px; border: 1px solid rgba(137,147,163,0.5); padding: 0 12px; height: 44px; flex: 0 1 260px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8993A3" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <input id="buscar-tienda" type="search" placeholder="Busca un jugador o colección" style="background: transparent; border: 0; color: #F7F4E8; font: inherit; font-size: 14px; width: 100%; outline: none">
+        </div>
+        <a href="#" aria-label="Mi cuenta" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg>
+        </a>
+        <a href="Carrito.dc.html" aria-label="Carrito, 2 artículos" style="position: relative; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2" aria-hidden="true"><path d="M3 4h2l2.4 11h11.2L21 7H6.2"></path><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle></svg>
+          <span style="position: absolute; top: 2px; right: 0; background: #F7F4E8; color: #07122D; font-size: 11px; font-weight: 600; min-width: 18px; height: 18px; display: flex; align-items: center; justify-content: center">2</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Encabezado de tienda -->
+  <section style="max-width: 1280px; margin: 0 auto; padding: 48px 24px 24px; display: flex; flex-direction: column; gap: 24px">
+    <nav aria-label="Ruta" style="font-size: 13px; color: #8993A3; display: flex; gap: 8px">
+      <a href="Main.dc.html" style="color: #8993A3">Inicio</a><span aria-hidden="true">/</span><span>Tienda</span>
+    </nav>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap">
+      <h1 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(56px, 7vw, 96px); line-height: 1; text-transform: uppercase">La vitrina</h1>
+      <span style="font-size: 14px; color: #8993A3">{{conteo}}</span>
+    </div>
+    <div role="tablist" aria-label="Tipo de producto" style="display: flex; gap: 8px; flex-wrap: wrap">
+      <sc-for list="{{tabs}}" as="t" hint-placeholder-count="5">
+        <sc-if value="{{t.on}}" hint-placeholder-val="{{ false }}">
+          <button type="button" role="tab" aria-selected="true" onClick="{{t.pick}}" style="height: 44px; padding: 0 18px; border-radius: 0; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; background: #F7F4E8; color: #07122D; border: 1px solid #F7F4E8">{{t.label}}</button>
+        </sc-if>
+        <sc-if value="{{t.off}}" hint-placeholder-val="{{ true }}">
+          <button type="button" role="tab" aria-selected="false" onClick="{{t.pick}}" style="height: 44px; padding: 0 18px; border-radius: 0; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; background: transparent; color: #F7F4E8; border: 1px solid rgba(137,147,163,0.6)">{{t.label}}</button>
+        </sc-if>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- Filtros + grilla -->
+  <section style="max-width: 1280px; margin: 0 auto; padding: 16px 24px 112px; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+    <aside aria-label="Filtros" style="flex: 1 1 220px; max-width: 280px; display: flex; flex-direction: column; gap: 32px; border-top: 1px solid rgba(137,147,163,0.4); padding-top: 24px">
+      <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px">
+        <legend style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3; padding: 0 0 12px">CATEGORÍA</legend>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> AAA</label>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> A</label>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> B</label>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> C</label>
+      </fieldset>
+      <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px">
+        <legend style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3; padding: 0 0 12px">TIPO DE TARJETA</legend>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> Numerada</label>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> Patch</label>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> Firma</label>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> Rookie</label>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> Paralela</label>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> Insert</label>
+      </fieldset>
+      <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px">
+        <legend style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3; padding: 0 0 12px">COMPETENCIA</legend>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> Selecciones</label>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> Ligas europeas</label>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> MLS</label>
+        <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox"> Liga MX</label>
+      </fieldset>
+      <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px">
+        <legend style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3; padding: 0 0 12px">PRECIO (Q)</legend>
+        <div style="display: flex; gap: 8px; align-items: center">
+          <label for="pmin" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Precio mínimo</label>
+          <input id="pmin" type="number" placeholder="Mín." style="width: 100%; height: 44px; padding: 0 12px; background: transparent; border: 1px solid rgba(137,147,163,0.6); color: #F7F4E8; font: inherit; font-size: 14px; border-radius: 0">
+          <span aria-hidden="true" style="color: #8993A3">–</span>
+          <label for="pmax" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Precio máximo</label>
+          <input id="pmax" type="number" placeholder="Máx." style="width: 100%; height: 44px; padding: 0 12px; background: transparent; border: 1px solid rgba(137,147,163,0.6); color: #F7F4E8; font: inherit; font-size: 14px; border-radius: 0">
+        </div>
+      </fieldset>
+      <label style="display: flex; gap: 12px; align-items: center; font-size: 15px; min-height: 32px"><input class="chk" type="checkbox" checked> Solo disponibles</label>
+    </aside>
+
+    <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <span style="display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(137,147,163,0.6); padding: 4px 10px; font-size: 13px; font-weight: 600">Solo disponibles
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px">
+          <label for="orden" style="font-size: 14px; color: #8993A3">Ordenar por</label>
+          <select id="orden" style="height: 44px; padding: 0 12px; background: #101E45; color: #F7F4E8; border: 1px solid rgba(137,147,163,0.6); font: inherit; font-size: 14px; border-radius: 0">
+            <option>Recién llegadas</option>
+            <option>Precio: menor a mayor</option>
+            <option>Precio: mayor a menor</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 32px 24px">
+        <sc-for list="{{lista}}" as="p" hint-placeholder-count="9">
+          <a href="Producto.dc.html" class="lift" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none; color: #F7F4E8">
+            <div style="aspect-ratio: 4 / 5; background: #101E45; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: {{p.pad}}px; box-sizing: border-box">
+              <sc-if value="{{p.img}}" hint-placeholder-val="{{ false }}">
+                <img src="{{p.img}}" alt="{{p.alt}}" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: contain; display: block">
+              </sc-if>
+              <sc-if value="{{p.sinFoto}}" hint-placeholder-val="{{ true }}">
+                <div style="width: 58%; aspect-ratio: 5 / 8; border: 2px solid rgba(137,147,163,0.6); display: flex; flex-direction: column">
+                  <div style="height: 16%; border-bottom: 2px solid rgba(137,147,163,0.6)"></div>
+                  <div style="flex: 1; margin: 10px; border-radius: 6px; background: #07122D; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8px">
+                    <span style="font-family: Anton, Impact, sans-serif; font-size: 40px; line-height: 1; color: #FFC632">{{p.hueco}}</span>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px">
+              <div style="display: flex; gap: 8px; align-items: center; min-height: 22px">
+                <sc-if value="{{p.rareza}}" hint-placeholder-val="{{ false }}">
+                  <span style="background: #FFC632; color: #07122D; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 2px 8px">{{p.rareza}}</span>
+                </sc-if>
+                <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">{{p.estado}}</span>
+              </div>
+              <span style="font-family: Anton, Impact, sans-serif; font-size: 24px; line-height: 1.05; text-transform: uppercase">{{p.nombre}}</span>
+              <span style="font-size: 14px; color: #8993A3">{{p.detalle}}</span>
+              <span style="font-family: Anton, Impact, sans-serif; font-size: 22px; line-height: 1; padding-top: 4px">{{p.precio}}</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+
+      <nav aria-label="Páginas" style="display: flex; justify-content: center; gap: 8px; padding-top: 32px">
+        <a href="#" aria-current="page" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #F7F4E8; color: #07122D; text-decoration: none; font-weight: 600">1</a>
+        <a href="#" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(137,147,163,0.6); text-decoration: none; font-weight: 600">2</a>
+        <a href="#" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(137,147,163,0.6); text-decoration: none; font-weight: 600">3</a>
+        <a href="#" aria-label="Página siguiente" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(137,147,163,0.6)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <footer style="background: #101014; border-top: 1px solid rgba(137,147,163,0.35)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 32px 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #8993A3">
+      <span>© 2026 El Coleccionista · Guatemala</span>
+      <span>Coleccionamos por el gusto de coleccionar. No presentamos ninguna tarjeta como inversión.</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tipo: 'todo' };
+  }
+  renderVals() {
+    const tipo = this.state.tipo;
+    const VB = {
+      select: '/_blob/a431b89387837401dbca1dd848bef370',
+      bundesliga: '/_blob/cfc15cad644b7323d96fef7528702a84',
+      uefa: '/_blob/4f9c1a0e5c2bd389fd10a1f17ad37010',
+      merlin: '/_blob/6073098dd06f25eb66333180512e4b8c'
+    };
+    const caja = (img, nombre, detalle, estado, precio, tipo) => ({ tipo, img, alt: nombre, sinFoto: false, hueco: '', rareza: '', estado, nombre, detalle, precio, pad: 20 });
+    const carta = (img, nombre, detalle, rareza, estado) => ({ tipo: 'suelta', img, alt: 'Tarjeta de ' + nombre + ', ' + detalle, sinFoto: false, hueco: '', rareza, estado: estado || 'DISPONIBLE', nombre, detalle, precio: 'Q[PRECIO]', pad: 0 });
+    const sorpresa = (cat, precio) => ({ tipo: 'sorpresa', img: '', sinFoto: true, hueco: cat, rareza: '', estado: 'TARJETA SORPRESA', nombre: 'Categoría ' + cat, detalle: 'Numerada, patch, firma, rookie, paralela o insert', precio, pad: 0 });
+    const productos = [
+      caja(VB.uefa, 'Combo value box + tarjeta categoría AAA', 'Eliges tu value box al comprar', 'COMBO · AHORRAS Q851', 'Q999', 'combo'),
+      caja(VB.select, 'Combo value box + tarjeta categoría A', 'Eliges tu value box al comprar', 'COMBO · AHORRAS Q800', 'Q850', 'combo'),
+      caja(VB.bundesliga, 'Combo value box + tarjeta categoría B', 'Eliges tu value box al comprar', 'COMBO · AHORRAS Q750', 'Q700', 'combo'),
+      caja(VB.merlin, 'Combo value box + tarjeta categoría C', 'Eliges tu value box al comprar', 'COMBO · AHORRAS Q750', 'Q600', 'combo'),
+      caja(VB.select, 'Panini Select 2025-26', '24 tarjetas por caja', 'VALUE BOX', 'Q550', 'sellado'),
+      caja(VB.bundesliga, 'Topps Chrome Bundesliga 2025/26', '7 sobres de 4 tarjetas', 'VALUE BOX', 'Q550', 'sellado'),
+      caja(VB.uefa, 'Topps Chrome UEFA 2025/26', '4 paralelas Raywave exclusivas', 'VALUE BOX', 'Q550', 'sellado'),
+      caja(VB.merlin, 'Topps Merlin Premier League 2026', '2 insertos TA-DA exclusivos', 'VALUE BOX', 'Q550', 'sellado'),
+      caja('/_blob/75412346cf71514557a5c2a4a1d898aa', 'Topps Premier League Flagship 2026/27', '6 sobres de 10 tarjetas · 4 Green Voltage y 2 Mayhem', 'VALUE BOX', 'Q550', 'sellado'),
+      caja('/_blob/5fa41bb0b9ca9adf1fe83062d36e0630', 'Panini Prizm FIFA World Cup 2026', '6 sobres de 7 tarjetas', 'MEGA BOX', 'Q750', 'sellado'),
+      caja('/_blob/1567b3c47b6a301390b5f79d2721c192', 'Panini Select 2025-26', '6 sobres de 10 tarjetas', 'MEGA BOX', 'Q750', 'sellado'),
+      sorpresa('AAA', 'Q1,300'),
+      sorpresa('A', 'Q1,100'),
+      sorpresa('B', 'Q900'),
+      sorpresa('C', 'Q800'),
+      carta('/_blob/3b35f1e68d3d5b387749009c3f50e710', 'Luis Suárez', 'Leaf Metal · Autógrafo', 'AUTO'),
+      carta('/_blob/d86527dd325d6b05e4b75a12b1422ae5', 'Enner Valencia', 'Panini Prizm · Autógrafo', 'AUTO'),
+      carta('/_blob/10bf8550622eca632ee462b214604507', 'Andrés Iniesta', 'Leaf Global Graphs · Autógrafo', '8/25'),
+      carta('/_blob/ef98849b820c5474dbe406c02112c953', 'Cristiano Ronaldo', 'Donruss Zero Gravity', ''),
+      carta('/_blob/3af5fb73a4a4f7852c533a2b341c9b3b', 'Alphonso Davies', 'Topps Living', '', 'PSA 9'),
+      carta('/_blob/654831aaf6269c446b06fd2428eb3824', 'Marco Pappa', 'SP Game Used · Jersey', 'PATCH'),
+      carta('/_blob/64833d23562e541a8523600a7a1aec47', 'Rookie Arsenal #56', 'Topps Chrome · Champions League', 'RC'),
+      carta('/_blob/06acc7373d031560fe5f85a240198617', 'Aaron Herrera', 'Topps', ''),
+      carta('/_blob/7df3ee39c2d7e95cb5f64eb803df69e6', 'Carlos Ruiz', 'SP Game Used', '')
+    ];
+    const lista = tipo === 'todo' ? productos : productos.filter((p) => p.tipo === tipo);
+    const tabs = [
+      { id: 'todo', label: 'Todo' },
+      { id: 'combo', label: 'Combos' },
+      { id: 'sellado', label: 'Cajas selladas' },
+      { id: 'sorpresa', label: 'Tarjeta sorpresa' },
+      { id: 'suelta', label: 'Tarjetas sueltas' }
+    ].map((t) => ({
+      ...t,
+      on: t.id === tipo,
+      off: t.id !== tipo,
+      pick: () => this.setState({ tipo: t.id })
+    }));
+    return { lista, tabs, conteo: lista.length + (lista.length === 1 ? ' producto' : ' productos') };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-11-07T23:50:00Z"},
+  "title": "El Coleccionista — Ecommerce",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 900, "title": "01 · Inicio (abre en Play y haz scroll)", "expand": "fill", "is_interactive": true},
+    "Catalogo.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 2400, "title": "02 · Tienda", "expand": "fill", "is_interactive": true},
+    "Producto.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 2500, "title": "03 · Ficha de tarjeta", "expand": "fill", "is_interactive": true},
+    "Carrito.dc.html": {"x": 4560, "y": 0, "w": 1440, "h": 1500, "title": "04 · Carrito y pago", "expand": "fill", "is_interactive": true},
+    "Admin.dc.html": {"x": 6080, "y": 0, "w": 1440, "h": 1100, "title": "05 · Admin (login → panel)", "expand": "fill", "is_interactive": true}
+  },
+  "order": ["Main.dc.html", "Catalogo.dc.html", "Producto.dc.html", "Carrito.dc.html", "Admin.dc.html"],
+  "notes": {
+    "titulo": {"x": 0, "y": -320, "text": "El Coleccionista — Tienda en línea", "kind": "title1", "maxW": 6000}
+  },
+  "designSystems": [
+    {"title": "El Coleccionista", "namespace": "el-coleccionista", "artifact": "https://claude.ai/code/artifact/039af7a3-96b3-4cf9-adf6-74bff6b3d19c", "version": "1793929694-cf0c", "copiedAt": "2026-11-07T23:50:00Z"}
+  ]
+}

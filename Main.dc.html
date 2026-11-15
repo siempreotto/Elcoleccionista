@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>El Coleccionista · Inicio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Caveat:wght@500&amp;family=Inter:wght@400;500;600&amp;family=Pixelify+Sans:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#07122D}
+a{color:#F7F4E8}a:hover{color:#FFC632}
+input::placeholder{color:#8993A3}
+.p3d{transform-style:preserve-3d}
+.face{position:absolute;box-sizing:border-box;outline:1px solid rgba(247,244,232,0.14)}
+.notch{clip-path:polygon(0 4px,4px 4px,4px 0,calc(100% - 4px) 0,calc(100% - 4px) 4px,100% 4px,100% calc(100% - 4px),calc(100% - 4px) calc(100% - 4px),calc(100% - 4px) 100%,4px 100%,4px calc(100% - 4px),0 calc(100% - 4px))}
+.lift{transition:transform .15s ease}.lift:hover{transform:translateY(-4px)}
+@keyframes ecPulse{0%,100%{box-shadow:4px 4px 0 #101014,0 0 0 0 rgba(255,198,50,0)}50%{box-shadow:4px 4px 0 #101014,0 0 0 4px rgba(255,198,50,.35)}}
+.ec-combo-btn{animation:ecPulse 2.6s ease-in-out infinite;transition:transform .15s ease}
+.ec-combo-btn:hover{transform:translate(-2px,-2px);color:#F7F4E8}
+.ec-combo-btn:focus-visible{outline:3px solid #FFC632;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.ec-combo-btn{animation:none}}
+.navlink{color:#F7F4E8;text-decoration:none}.navlink:hover{color:#FFC632}
+@keyframes ecFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes ecSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes ecRow{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes ecHint{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+.ec-float{animation:ecFloat 5s ease-in-out infinite}
+.ec-spin{animation:ecSpin 48s linear infinite}
+.ec-row{animation:ecRow 60s linear infinite}
+.ec-hint{animation:ecHint 1.6s ease-in-out infinite}
+@keyframes ecBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+.ec-breathe{animation:ecBreathe 7s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.ec-float,.ec-spin,.ec-row,.ec-hint,.ec-breathe{animation:none}}
+.ec-logo{height:64px;width:auto}
+.ec-intro{height:520vh}
+.ec-uni{height:280vh}
+.ec-stage{height:100vh;height:100svh}
+.ec-wheelbox{height:min(640px,80vh)}
+.ec-filabox{height:820px}
+.ec-tile{-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent),linear-gradient(180deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent),linear-gradient(180deg,transparent,#000 6%,#000 94%,transparent);mask-composite:intersect}
+@media (max-width: 760px){
+.ec-navtxt{display:none}
+.ec-logo{height:46px}
+.ec-intro{height:420vh}
+.ec-uni{height:220vh}
+.ec-wheelbox{height:46vh;height:46svh}
+.ec-unitext{gap:12px!important}
+.ec-unitext p{font-size:16px!important}
+.ec-filabox{height:560px}
+.ec-filatrack{zoom:.6;top:80px!important}
+.ec-vpad{padding:28px 24px!important}
+#nuevas-titulo,#cajas-titulo,#aprende-titulo,#vending-titulo,#selladas-titulo{font-size:40px!important}
+}
+</style>
+</helmet>
+<div style="background: #07122D; color: #F7F4E8; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.5; overflow-x: clip">
+
+  <!-- Barra fija -->
+  <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; pointer-events: none">
+    <a href="Main.dc.html" aria-label="El Coleccionista, inicio" style="pointer-events: auto; line-height: 0">
+      <img class="ec-logo" src="/_blob/ef617feef0df76935b82fbc5f4224120" alt="El Coleccionista · Tarjetas de fútbol">
+    </a>
+    <nav aria-label="Principal" style="pointer-events: auto; display: flex; align-items: center; gap: 12px">
+      <a class="navlink ec-navtxt" href="#cajas" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; font-weight: 600; font-size: 14px; background: #07122D">Cajas</a>
+      <a class="navlink ec-navtxt" href="#aprende" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; font-weight: 600; font-size: 14px; background: #07122D">Aprende</a>
+      <a class="navlink ec-navtxt" href="#vending" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; font-weight: 600; font-size: 14px; background: #07122D">Vending</a>
+      <a href="Catalogo.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid rgba(247,244,232,0.5); text-decoration: none; font-weight: 600; font-size: 14px; background: #07122D">Tienda</a>
+      <a href="Carrito.dc.html" aria-label="Carrito, 2 artículos" style="position: relative; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #F7F4E8; box-shadow: 4px 4px 0 #101014">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#07122D" stroke-width="2.2" aria-hidden="true"><path d="M3 4h2l2.4 11h11.2L21 7H6.2"></path><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle></svg>
+        <span style="position: absolute; top: -8px; right: -8px; background: #005DDB; color: #F7F4E8; font-size: 11px; font-weight: 600; min-width: 20px; height: 20px; display: flex; align-items: center; justify-content: center">2</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ESCENA 1: la caja se abre y entramos a la tarjeta -->
+  <section id="ec-intro" class="ec-intro" aria-label="Abre la caja" style="position: relative">
+    <div class="ec-stage" style="position: sticky; top: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; perspective: 1600px">
+
+      <div style="position: absolute; left: 0; right: 0; top: 10vh; padding: 0 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; opacity: {{introO}}; transform: translateY({{introY}}px); z-index: 5">
+        <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 20px; color: #8993A3">Nivel 01</span>
+        <h1 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(40px, 5vw, 72px); line-height: 0.98; text-transform: uppercase; max-width: 820px">Cada tarjeta tiene una historia</h1>
+      </div>
+
+      <!-- Fotos reales de la caja: cerrada → abierta → la cámara entra a la tarjeta -->
+      <div style="position: absolute; left: 50%; top: 58%; width: {{pw}}px; height: {{ph}}px; margin-left: {{pmx}}px; margin-top: {{pmy}}px; transform-origin: 50.5% 51.4%; transform: {{photoT}}; opacity: {{photoO}}; -webkit-mask-image: radial-gradient(closest-side, #000 78%, transparent 100%); mask-image: radial-gradient(closest-side, #000 78%, transparent 100%)">
+        <canvas id="ec-seq" width="960" height="720" role="img" aria-label="Se abre la caja de El Coleccionista y aparece la tarjeta autografiada de Luis Suárez" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"></canvas>
+      </div>
+
+      <div aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 0; height: 0">
+        <sc-for list="{{chispas}}" as="s" hint-placeholder-count="14">
+          <svg width="18" height="18" viewBox="0 0 3 3" style="position: absolute; left: 0; top: 0; transform: {{s.t}}; opacity: {{s.o}}"><rect x="1" y="0" width="1" height="3" fill="#FFC632"></rect><rect x="0" y="1" width="3" height="1" fill="#FFC632"></rect></svg>
+        </sc-for>
+      </div>
+
+      <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; perspective: 1200px">
+        <img src="/_blob/765b56649b2536c9b6637dbde830edba" alt="Tarjeta autografiada de Luis Suárez, Leaf Metal" style="width: {{ow}}px; height: auto; border-radius: 10px; transform: {{cardT}}; opacity: {{cardO}}">
+      </div>
+      <div style="position: absolute; left: 0; right: 0; bottom: 6vh; display: flex; justify-content: center; pointer-events: none">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; opacity: {{captionO}}">
+          <span style="font-family: Caveat, cursive; font-weight: 500; font-size: 34px; line-height: 1">esta sí nos hizo gritar</span>
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">LUIS SUÁREZ · LEAF METAL · AUTO</span>
+        </div>
+      </div>
+
+      <div style="position: absolute; bottom: 32px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: {{hintO}}">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">DESLIZA PARA ABRIR LA CAJA</span>
+        <svg class="ec-hint" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESCENA 2: el universo, la rueda de slabs -->
+  <section id="ec-universo" class="ec-uni" aria-labelledby="universo-titulo" style="position: relative">
+    <div class="ec-stage" style="position: sticky; top: 0; overflow: hidden; display: flex; flex-wrap: wrap; align-items: center; align-content: center; justify-content: center; gap: 16px 24px; padding: 88px 24px 16px; box-sizing: border-box; max-width: 1360px; margin: 0 auto">
+      <div class="ec-unitext" style="flex: 1 1 340px; max-width: 480px; display: flex; flex-direction: column; gap: 20px; opacity: {{uniO}}; transform: translateY({{uniY}}px)">
+        <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 20px; color: #8993A3">Nivel 02</span>
+        <h2 id="universo-titulo" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 6vw, 92px); line-height: 0.95; text-transform: uppercase">Bienvenido al universo</h2>
+        <p style="margin: 0; font-size: 18px; max-width: 420px">RC, autógrafos, patches y numeradas. Cada una con foto real, su condición y el precio de frente.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; padding-top: 8px">
+          <a href="Catalogo.dc.html" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; background: #F7F4E8; color: #07122D; text-decoration: none; font-family: Anton, Impact, sans-serif; font-size: 20px; text-transform: uppercase; box-shadow: 4px 4px 0 #101014">Entrar a la vitrina</a>
+          <a href="#aprende" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; background: #005DDB; color: #F7F4E8; text-decoration: none; font-family: Anton, Impact, sans-serif; font-size: 20px; text-transform: uppercase; box-shadow: 4px 4px 0 #101014">Qué significa cada una</a>
+        </div>
+      </div>
+
+      <div class="ec-wheelbox" style="flex: 1 1 520px; min-width: 0; position: relative; perspective: 1400px; display: flex; align-items: center; justify-content: center">
+        <div class="p3d" style="position: relative; width: 0; height: 0; transform: {{ruedaT}}">
+          <div class="p3d ec-spin" style="position: absolute; left: 0; top: 0; width: 0; height: 0">
+            <sc-for list="{{rueda}}" as="r" hint-placeholder-count="9">
+              <img class="ec-tile" src="{{r.img}}" alt="{{r.alt}}" loading="lazy" decoding="async" style="position: absolute; left: -66px; top: -82px; width: 132px; height: 165px; display: block; transform: {{r.t}}">
+            </sc-for>
+          </div>
+          <img src="/_blob/ef617feef0df76935b82fbc5f4224120" alt="" style="position: absolute; left: -64px; top: -48px; width: 128px; height: auto">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESCENA 3: la vitrina infinita -->
+  <section aria-labelledby="vitrina-titulo" style="position: relative; padding: 112px 0 0; border-top: 1px solid rgba(137,147,163,0.3)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; position: relative; z-index: 2">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 20px; color: #8993A3">Nivel 03</span>
+        <h2 id="vitrina-titulo" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 6vw, 88px); line-height: 0.95; text-transform: uppercase">La vitrina no se detiene</h2>
+      </div>
+      <p style="margin: 0; max-width: 380px; font-size: 17px; color: #F7F4E8">Todas las semanas entran tarjetas nuevas. Escríbenos si buscas una en particular.</p>
+    </div>
+    <div aria-hidden="true" class="ec-filabox" style="position: relative; overflow: hidden; perspective: 1100px">
+      <div class="p3d ec-filatrack" style="position: absolute; left: -4%; top: 90px; transform: rotateY(36deg) rotateX(8deg); transform-origin: left center">
+        <div class="p3d ec-row" style="display: flex; gap: 44px; width: max-content">
+          <sc-for list="{{fila}}" as="f" hint-placeholder-count="9">
+            <img class="ec-tile" src="{{f.img}}" alt="" loading="lazy" decoding="async" style="flex: 0 0 auto; width: 400px; height: 500px; display: block; transform: rotateY(-44deg)">
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recién llegadas -->
+  <section aria-labelledby="nuevas-titulo" style="max-width: 1280px; margin: 0 auto; padding: 96px 24px 112px">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 32px">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 18px; color: #8993A3">Recién llegadas</span>
+        <h2 id="nuevas-titulo" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 56px; line-height: 1; text-transform: uppercase">Lo nuevo en la vitrina</h2>
+      </div>
+      <a href="Catalogo.dc.html" style="font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px">Ver toda la tienda
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px">
+      <sc-for list="{{productos}}" as="p" hint-placeholder-count="4">
+        <a href="{{p.href}}" class="lift" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #F7F4E8">
+          <div style="aspect-ratio: 4 / 5; background: #101E45; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative">
+            <sc-if value="{{p.img}}" hint-placeholder-val="{{ true }}">
+              <img src="{{p.img}}" alt="{{p.alt}}" style="width: 100%; height: 100%; object-fit: cover; display: block">
+            </sc-if>
+            <sc-if value="{{p.sinFoto}}" hint-placeholder-val="{{ false }}">
+              <div style="width: 58%; aspect-ratio: 5 / 8; border: 2px solid rgba(137,147,163,0.6); display: flex; flex-direction: column">
+                <div style="height: 16%; border-bottom: 2px solid rgba(137,147,163,0.6)"></div>
+                <div style="flex: 1; margin: 10px; border-radius: 6px; background: #07122D; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8px">
+                  <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 14px; color: #8993A3">Foto real</span>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <div style="display: flex; gap: 8px; align-items: center; min-height: 22px">
+              <sc-if value="{{p.rareza}}" hint-placeholder-val="{{ true }}">
+                <span style="background: #FFC632; color: #07122D; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 2px 8px">{{p.rareza}}</span>
+              </sc-if>
+              <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">{{p.estado}}</span>
+            </div>
+            <span style="font-family: Anton, Impact, sans-serif; font-size: 26px; line-height: 1.05; text-transform: uppercase">{{p.nombre}}</span>
+            <span style="font-size: 14px; color: #8993A3">{{p.detalle}}</span>
+            <span style="font-family: Anton, Impact, sans-serif; font-size: 24px; line-height: 1; padding-top: 4px">{{p.precio}}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- Combos: value box + tarjeta sorpresa -->
+  <section id="cajas" aria-labelledby="cajas-titulo" style="background: #101E45">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px">
+
+      <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-end; justify-content: space-between">
+        <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+          <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 18px; color: #8993A3">Combos El Coleccionista</span>
+          <h2 id="cajas-titulo" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 64px; line-height: 1; text-transform: uppercase">Caja + tarjeta.<br>Tu hit va asegurado.</h2>
+          <p style="margin: 0; font-size: 18px; max-width: 620px">Tú no te preocupes: nuestro objetivo es que abrir cada caja sea especial, y sabemos que detrás de cada tarjeta hay una historia. Por eso cada combo trae una value box sellada y una tarjeta sorpresa de la categoría que elijas.</p>
+        </div>
+        <div style="flex: 0 1 380px; display: flex; flex-direction: column; gap: 10px">
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">EN CADA CATEGORÍA PUEDE SALIR</span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap">
+            <span style="background: #FFC632; color: #07122D; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 4px 10px">NUMERADA</span>
+            <span style="background: #FFC632; color: #07122D; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 4px 10px">PATCH</span>
+            <span style="background: #FFC632; color: #07122D; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 4px 10px">FIRMA</span>
+            <span style="background: #FFC632; color: #07122D; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 4px 10px">ROOKIE</span>
+            <span style="background: #FFC632; color: #07122D; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 4px 10px">PARALELA</span>
+            <span style="background: #FFC632; color: #07122D; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 4px 10px">INSERT</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arma tu combo -->
+      <div class="notch" style="background: #07122D; display: flex; flex-wrap: wrap; align-items: stretch">
+        <div style="flex: 1 1 360px; min-width: 0; min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 32px 24px; position: relative">
+          <div aria-hidden="true" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: Anton, Impact, sans-serif; font-size: clamp(160px, 22vw, 300px); line-height: 1; color: #101E45; user-select: none">{{cat.id}}</div>
+          <img src="{{caja.img}}" alt="{{caja.nombre}}" style="position: relative; width: min(300px, 70%); height: auto; display: block">
+          <span style="position: relative; font-family: Caveat, cursive; font-weight: 500; font-size: 30px; line-height: 1">+ una tarjeta categoría {{cat.id}}</span>
+        </div>
+        <div class="ec-vpad" style="flex: 1 1 440px; min-width: 0; padding: 40px; display: flex; flex-direction: column; gap: 24px; border-left: 1px solid rgba(137,147,163,0.25)">
+          <div style="display: flex; flex-direction: column; gap: 12px">
+            <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">1 · ELIGE TU CAJA: VALUE BOX O MEGA BOX</span>
+            <div role="radiogroup" aria-label="Caja" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(68px, 1fr)); gap: 8px">
+              <sc-for list="{{comboCajas}}" as="b" hint-placeholder-count="4">
+                <sc-if value="{{b.on}}" hint-placeholder-val="{{ false }}">
+                  <button type="button" role="radio" aria-checked="true" aria-label="{{b.nombre}}" onClick="{{b.pick}}" style="padding: 8px; background: #101E45; border: 2px solid #F7F4E8; border-radius: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; min-height: 80px"><img src="{{b.img}}" alt="" style="width: 100%; max-width: 72px; height: auto"></button>
+                </sc-if>
+                <sc-if value="{{b.off}}" hint-placeholder-val="{{ true }}">
+                  <button type="button" role="radio" aria-checked="false" aria-label="{{b.nombre}}" onClick="{{b.pick}}" style="padding: 8px; background: transparent; border: 1px solid rgba(137,147,163,0.5); border-radius: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; min-height: 80px"><img src="{{b.img}}" alt="" style="width: 100%; max-width: 72px; height: auto; opacity: 0.75"></button>
+                </sc-if>
+              </sc-for>
+            </div>
+            <span style="font-size: 15px; font-weight: 600">{{caja.nombre}}</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px">
+            <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">2 · ELIGE LA CATEGORÍA DE TU TARJETA</span>
+            <div role="radiogroup" aria-label="Categoría de tarjeta" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+              <sc-for list="{{comboCats}}" as="c" hint-placeholder-count="4">
+                <sc-if value="{{c.on}}" hint-placeholder-val="{{ false }}">
+                  <button type="button" role="radio" aria-checked="true" onClick="{{c.pick}}" style="min-height: 72px; padding: 8px 4px; background: #F7F4E8; color: #07122D; border: 2px solid #F7F4E8; border-radius: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px"><span style="font-family: Anton, Impact, sans-serif; font-size: 26px; line-height: 1">{{c.id}}</span><span style="font-size: 13px; font-weight: 600">{{c.combo}}</span></button>
+                </sc-if>
+                <sc-if value="{{c.off}}" hint-placeholder-val="{{ true }}">
+                  <button type="button" role="radio" aria-checked="false" onClick="{{c.pick}}" style="min-height: 72px; padding: 8px 4px; background: transparent; color: #F7F4E8; border: 1px solid rgba(137,147,163,0.5); border-radius: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px"><span style="font-family: Anton, Impact, sans-serif; font-size: 26px; line-height: 1">{{c.id}}</span><span style="font-size: 13px; font-weight: 600; color: #8993A3">{{c.combo}}</span></button>
+                </sc-if>
+              </sc-for>
+            </div>
+            <span style="font-size: 14px; color: #8993A3">{{cat.texto}}</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; border-top: 1px solid rgba(137,147,163,0.4); padding-top: 20px">
+            <div style="display: flex; flex-direction: column; gap: 4px">
+              <span style="font-size: 14px; color: #8993A3">Por separado <s>{{separado}}</s></span>
+              <span style="font-family: Anton, Impact, sans-serif; font-size: 56px; line-height: 1">{{cat.combo}}</span>
+              <span style="align-self: flex-start; background: #005DDB; color: #F7F4E8; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 4px 10px">AHORRAS {{ahorro}}</span>
+            </div>
+            <button type="button" onClick="{{agregarCombo}}" style="flex: 1 1 200px; max-width: 280px; height: 60px; background: #F7F4E8; color: #07122D; border: 0; border-radius: 0; font-family: Anton, Impact, sans-serif; font-size: 22px; letter-spacing: 0.02em; text-transform: uppercase; box-shadow: 4px 4px 0 #101014; cursor: pointer">Agregar combo</button>
+          </div>
+          <sc-if value="{{comboAgregado}}" hint-placeholder-val="{{ false }}">
+            <div role="status" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 16px; background: #101E45; border: 1px solid rgba(137,147,163,0.5)">
+              <span style="font-size: 15px; font-weight: 600">Listo. Tu combo ya está en el carrito.</span>
+              <a href="Carrito.dc.html" style="font-size: 14px; font-weight: 600">Ver carrito</a>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <!-- Precios por categoría -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px">
+        <sc-for list="{{categorias}}" as="k" hint-placeholder-count="4">
+          <article style="border: 1px solid rgba(137,147,163,0.4); padding: 24px; display: flex; flex-direction: column; gap: 12px">
+            <div style="display: flex; justify-content: space-between; align-items: baseline">
+              <span style="font-family: Anton, Impact, sans-serif; font-size: 44px; line-height: 1">{{k.id}}</span>
+              <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 15px; color: #8993A3">Categoría</span>
+            </div>
+            <span style="font-size: 14px; color: #F7F4E8; flex: 1">{{k.texto}}</span>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid rgba(137,147,163,0.3); padding-top: 12px">
+              <span style="font-size: 14px; color: #8993A3">En combo</span>
+              <span style="font-family: Anton, Impact, sans-serif; font-size: 28px">{{k.combo}}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline">
+              <span style="font-size: 14px; color: #8993A3">Tarjeta sola</span>
+              <span style="font-size: 15px; font-weight: 600">{{k.sola}}</span>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cajas selladas -->
+  <section id="selladas" aria-labelledby="selladas-titulo" style="max-width: 1280px; margin: 0 auto; padding: 112px 24px 0">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 32px">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 18px; color: #8993A3">Producto sellado</span>
+        <h2 id="selladas-titulo" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 56px; line-height: 1; text-transform: uppercase">Cajas selladas</h2>
+      </div>
+      <a href="Catalogo.dc.html" style="font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px">Ver en la tienda
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px">
+      <sc-for list="{{cajasSelladas}}" as="s" hint-placeholder-count="6">
+        <article style="display: flex; flex-direction: column; gap: 14px">
+          <div class="lift" style="aspect-ratio: 1 / 1; background: #101E45; display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box">
+            <img src="{{s.img}}" alt="{{s.nombre}}" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: contain; display: block">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">{{s.tipo}}</span>
+            <span style="font-family: Anton, Impact, sans-serif; font-size: 24px; line-height: 1.05; text-transform: uppercase">{{s.nombre}}</span>
+            <span style="font-size: 14px; color: #8993A3">{{s.detalle}}</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+            <span style="font-family: Anton, Impact, sans-serif; font-size: 28px; line-height: 1">{{s.precio}}</span>
+            <a href="Carrito.dc.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; background: #F7F4E8; color: #07122D; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 4px 4px 0 #101014">Agregar</a>
+          </div>
+          <a href="#cajas" onClick="{{s.llevar}}" class="ec-combo-btn" aria-label="Llévala en combo con una tarjeta especial desde {{s.desde}}" style="display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; background: #005DDB; color: #F7F4E8; text-decoration: none; box-shadow: 4px 4px 0 #101014; border: 2px solid #FFC632">
+            <span style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+              <span style="background: #FFC632; color: #07122D; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; padding: 3px 8px">HIT ASEGURADO</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </span>
+            <span style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap">
+              <span style="font-family: Anton, Impact, sans-serif; font-size: 22px; line-height: 1.05; text-transform: uppercase">Llévala en combo</span>
+              <span style="font-family: Anton, Impact, sans-serif; font-size: 22px; line-height: 1; color: #FFC632">desde {{s.desde}}</span>
+            </span>
+            <span style="font-size: 13px; font-weight: 500; line-height: 1.35">+ una tarjeta especial: autógrafo, numerada o patch</span>
+          </a>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- Aprende -->
+  <section id="aprende" aria-labelledby="aprende-titulo" style="max-width: 1280px; margin: 0 auto; padding: 112px 24px">
+    <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px">
+      <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 18px; color: #8993A3">Guía</span>
+      <h2 id="aprende-titulo" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 56px; line-height: 1; text-transform: uppercase">Antes de abrir tu primer sobre</h2>
+      <p style="margin: 8px 0 0; max-width: 620px; font-size: 17px">Lo que dice una tarjeta, explicado como te lo contaría un amigo que sabe.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+      <sc-for list="{{terminos}}" as="t" hint-placeholder-count="4">
+        <article class="notch" style="background: #101E45; padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; min-height: 220px">
+          <span style="align-self: flex-start; background: #FFC632; color: #07122D; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 4px 10px">{{t.sigla}}</span>
+          <h3 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 26px; line-height: 1.05; text-transform: uppercase">{{t.titulo}}</h3>
+          <p style="margin: 0; font-size: 15px; color: #F7F4E8">{{t.texto}}</p>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- Así trabajamos -->
+  <section aria-labelledby="promesa-titulo" style="border-top: 1px solid rgba(137,147,163,0.35); border-bottom: 1px solid rgba(137,147,163,0.35)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 48px">
+      <h2 id="promesa-titulo" style="margin: 0; flex: 1 1 280px; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 44px; line-height: 1.02; text-transform: uppercase">Así trabajamos</h2>
+      <div style="flex: 3 1 640px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px">
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="1.8" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+          <span style="font-weight: 600; font-size: 17px">Fotos reales</span>
+          <span style="font-size: 15px; color: #8993A3">Lo que ves es la tarjeta que recibes: frente, reverso y esquinas.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="1.8" aria-hidden="true"><path d="M3 12l9-9h8v8l-9 9z"></path><circle cx="15.5" cy="8.5" r="1.5"></circle></svg>
+          <span style="font-weight: 600; font-size: 17px">Precio claro</span>
+          <span style="font-size: 15px; color: #8993A3">Así está su condición, y este es el precio. Sin vueltas.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path></svg>
+          <span style="font-weight: 600; font-size: 17px">Te acompañamos</span>
+          <span style="font-size: 15px; color: #8993A3">Escríbenos antes de comprar y te contamos la historia de cada tarjeta.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vending -->
+  <section id="vending" aria-labelledby="vending-titulo" style="max-width: 1280px; margin: 0 auto; padding: 112px 24px">
+    <div class="notch" style="background: #101E45; display: flex; flex-wrap: wrap; align-items: stretch">
+      <div class="ec-vpad" style="flex: 1 1 320px; min-width: 0; padding: 56px; display: flex; flex-direction: column; gap: 20px; justify-content: center">
+        <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 18px; color: #8993A3">Próximamente</span>
+        <h2 id="vending-titulo" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 56px; line-height: 1; text-transform: uppercase">La vitrina sale a la calle</h2>
+        <p style="margin: 0; font-size: 17px; max-width: 460px">Estamos preparando máquinas de El Coleccionista en Ciudad de Guatemala. Déjanos tu correo y te avisamos dónde abrimos la primera.</p>
+        <form style="display: flex; gap: 12px; flex-wrap: wrap; padding-top: 8px">
+          <label for="correo-vending" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Tu correo</label>
+          <input id="correo-vending" type="email" placeholder="tu@correo.com" style="flex: 1 1 240px; height: 52px; padding: 0 16px; background: #07122D; border: 1px solid rgba(137,147,163,0.6); color: #F7F4E8; font: inherit; font-size: 15px; border-radius: 0">
+          <button type="button" style="height: 52px; padding: 0 28px; background: #F7F4E8; color: #07122D; border: 0; border-radius: 0; font-family: Anton, Impact, sans-serif; font-size: 20px; text-transform: uppercase; box-shadow: 4px 4px 0 #101014; cursor: pointer">Avísame</button>
+        </form>
+      </div>
+      <div style="flex: 1 1 420px; min-width: 0; min-height: 360px; background-image: url(/_blob/96b2569c16fcc399f67afe329cd0b770); background-size: cover; background-position: center" role="img" aria-label="Caja de El Coleccionista abierta con la frase Cada tarjeta tiene una historia"></div>
+    </div>
+  </section>
+
+  <!-- Cierre + Instagram -->
+  <section style="max-width: 1280px; margin: 0 auto; padding: 0 24px 112px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px">
+    <span style="font-family: Caveat, cursive; font-weight: 500; font-size: 40px; line-height: 1.1">las aperturas, en vivo</span>
+    <a href="https://instagram.com/elcoleccionistacom" style="font-family: Anton, Impact, sans-serif; font-size: clamp(40px, 6vw, 80px); line-height: 1; text-decoration: none; text-transform: uppercase">@elcoleccionistacom</a>
+  </section>
+
+  <footer style="background: #101014; border-top: 1px solid rgba(137,147,163,0.35)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 64px 24px 40px; display: flex; flex-wrap: wrap; gap: 48px">
+      <div style="flex: 2 1 300px; display: flex; flex-direction: column; gap: 16px">
+        <img src="/_blob/ef617feef0df76935b82fbc5f4224120" alt="El Coleccionista" style="height: 88px; width: auto; align-self: flex-start">
+        <p style="margin: 0; font-size: 14px; color: #8993A3; max-width: 340px">Coleccionamos por el gusto de coleccionar. No presentamos ninguna tarjeta como inversión.</p>
+      </div>
+      <nav aria-label="Tienda" style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">TIENDA</span>
+        <a href="Catalogo.dc.html">Tarjetas sueltas</a>
+        <a href="#cajas">Cajas con hits</a>
+        <a href="Catalogo.dc.html">Sobres y cajas selladas</a>
+        <a href="Catalogo.dc.html">Accesorios</a>
+      </nav>
+      <nav aria-label="Ayuda" style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">AYUDA</span>
+        <a href="#">Envíos y entregas</a>
+        <a href="#">Preguntas frecuentes</a>
+        <a href="#aprende">Guía para empezar</a>
+        <a href="#">Contacto</a>
+      </nav>
+      <nav aria-label="Redes" style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">SÍGUENOS</span>
+        <a href="https://instagram.com/elcoleccionistacom">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">WhatsApp</a>
+      </nav>
+    </div>
+    <div style="max-width: 1280px; margin: 0 auto; padding: 20px 24px 32px; border-top: 1px solid rgba(137,147,163,0.25); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #8993A3">
+      <span>© 2026 El Coleccionista · Guatemala</span>
+      <span style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center">
+        <span>elcoleccionista.shop</span>
+        <a href="Admin.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: #8993A3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10"></rect><path d="M8 11V7a4 4 0 018 0v4"></path></svg>
+          Login admin
+        </a>
+      </span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { p: 0, q: 0, vw: 1440, vh: 900, caja: 2, cat: 'A', comboAgregado: false };
+    this.raf = 0;
+    this.onScroll = this.onScroll.bind(this);
+    // Secuencia del video de la caja (85 cuadros, con la tarjeta real compuesta en cada uno)
+    this.seq = ['b298266c44a9419b255bfebfe25f9943','9b3e22ab58c718308bd6b12617aa94f5','6b2841f7f3addd47f0ec3496fbeca3a3','78403991619490eb6ddefb654ba74a02','519ea45313b45b14ba59a0c0a02ff40c','8d7d11825a096db80ff029faeba8bc79','eb641ffcf7361e7fafa09b5f9d08abb9','ecf13deab9ed36bd9556e85f99c10eb0','72c909f4d035cdc62cf439efe32b6777','29fecfc8ef01a3108f0821dfc66a694f','203975ec0390fe1d3db588a0004f331f','4c0b1644a478644cc77a574746d416df','36ac6009fa631155025633652710b1b2','4914a56d2ada81f47d182241f7e00a2d','bfebd6ff539609b8d8f4f25915c56bad','cf578623bca809b71bea91bf1a39c103','aaa258339f24b54ac9ebab7324bb6761','0ce5ac215ac34791af1d5c1bc8c39eea','14a1a9ec0f8ba8121169f3f149051f0c','629bab34ae5b64dde1bc686c683d06e9','8024b3e13f9137a22671b306970d4ab5','5eff84421921d33f8306565b8629bf08','f6376cf545ae1a8be17cc679ef167248','3dafef979aa6e775a6e182e1ed15b135','329f5a2d1604629662bcc0b7f675cf3d','55e245dd30d0f5a744221a107f65aa5b','04f048dd1d4efa5448dffc8671072800','27bba2043771b0781d2450ccfe145c5a','7cdba559f308a3a502d6b92d008630a2','bcb07de43e9bcc89704c425656fed2a1','549612b073bf687713d2cbf3d5c14525','2d256ff769b9384f8135b7ebe643043a','11e74823f1ba17be680150efc5e07703','e42cfd202b2fc15a98eb2d105044978f','46d18d2f3073d556d1d408c5834ce44c','12411b5b65aa9d7bd5ad1e2a2502d3da','c25e914ce0895fda36962d980ecbaba9','75d9185772491752436ae2edb1912cd2','dc2098457191c133c0d9cb4820be8507','3cfd0346fc61433f53ee97f828140a26','8dafa21cd0159ba4b83b27a1215625c7','ed6b19f5a2c6334ad2bae09eea0d1efc','ab380f869eb62a1ed0285cd4009865fc','37bff0ccd15cc2e5f65c1a4a96936f96','7aa37cf99be6646538bf1eb9db6ef787','c0ebdc52d1020a3e527c327d0b153862','1d7e2ac12423b445f684c886deaa5c57','0c1542792279d486171893e04c548f3f','8bf5a8c8879b47806cfa97a205f3287e','ffed30346119581feac3212b9bd756a3','408cfcd781e3499b7cb14d2410212fab','6c7e50aa7b0c89efe58d5f869cf6b909','9b82e35f646d5a8c6e82477e1dd8fbfb','8961eb5d9941a0a0ae2b170be3588406','1be1b0df3140b247fe8ac655d6b5c23d','f774f0f09f32ecb94306864d029336d7','077666737f9a384f1d75874da747e56c','4e295e1e4c6b7153e3f830fdfea17a0a','1db1d42210e68fe02708bcd6415ae660','46f022ca6d39a1e479fc4630cd8e9c6c','7a460545e7b7ea8b3cda6d262cc74f78','0c4814b12021561ced5164be67e00a5d','92cd67c72aaf283d47fa89d067e7ced9','22eaf06ed0ec8b5b3f8268abb1a67014','624ecb0af8940f68660d13cfc8ddc77f','600febbee88f2089627a5ce3fecffa6a','de829ab972ca67dfbd91945871281a1f','cd6d4af851295c6f24730de7e6afd7a0','cda33f71677871e10b4896ca53b87e86','96cb23937d60520bd8478e4e9d394490','1bc0b3605c64d6e5360c1212520e718c','35aa6b362e42d2656fcf7add79ab04fe','37d58a3a7093fffa48ef910bcb8a077a','ee6a0f381675a8b9344513a45dab4bc5','66989d127a573191a6210dc39e939876','5182d645c57cbc0d93c365e5d5347440','3dfcc98d6754bf981f42cb441055fdb2','cef0eafc86d595c05739b1355c9066ef','f2d5c9857d6df88af95b91a1be1ded0f','6263bb45c05828d43a952fd185cb9f89','3d873228959d0bc2de64547a4e3db283','9382cd6da9caf30c49c946037a869d44','34ae56b160371aed3aade5246e71140e','c04e901874bccd6cde06fb5aa3c6534e','721a1fd56c66dc801df1759787270806'].map((id) => '/_blob/' + id);
+    this.frames = [];
+    this.curFrame = 0;
+    this.drawn = -1;
+  }
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll);
+    // Precarga de la secuencia, en orden, y dibujo del cuadro que toca apenas esté listo
+    this.frames = this.seq.map((src, i) => {
+      const im = new Image();
+      im.decoding = 'async';
+      im.onload = () => { if (i <= this.curFrame && i > this.drawn) this.drawFrame(this.curFrame); };
+      im.src = src;
+      return im;
+    });
+    this.measure();
+  }
+  frameFor(p) {
+    const t = Math.max(0, Math.min(1, (p - 0.03) / 0.63));
+    return Math.round(t * (this.seq.length - 1));
+  }
+  drawFrame(i) {
+    const cv = document.getElementById('ec-seq');
+    if (!cv) return;
+    let k = i;
+    while (k >= 0 && !(this.frames[k] && this.frames[k].complete && this.frames[k].naturalWidth)) k--;
+    if (k < 0 || k === this.drawn) return;
+    cv.getContext('2d').drawImage(this.frames[k], 0, 0, cv.width, cv.height);
+    this.drawn = k;
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onScroll);
+    if (this.raf) cancelAnimationFrame(this.raf);
+  }
+  onScroll() {
+    if (this.raf) return;
+    this.raf = requestAnimationFrame(() => { this.raf = 0; this.measure(); });
+  }
+  progress(id) {
+    const el = document.getElementById(id);
+    if (!el) return 0;
+    const r = el.getBoundingClientRect();
+    const total = el.offsetHeight - window.innerHeight;
+    if (total <= 0) return 0;
+    return Math.max(0, Math.min(1, -r.top / total));
+  }
+  measure() {
+    const p = this.progress('ec-intro');
+    const q = this.progress('ec-universo');
+    this.curFrame = this.frameFor(p);
+    this.drawFrame(this.curFrame);
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const s = this.state;
+    if (Math.abs(p - s.p) > 0.0005 || Math.abs(q - s.q) > 0.0005 || vw !== s.vw || vh !== s.vh) this.setState({ p, q, vw, vh });
+  }
+  renderVals() {
+    const cl = (x) => Math.max(0, Math.min(1, x));
+    const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    const p = this.state.p;
+    const q = this.state.q;
+
+    // Escena 1 (fotos reales): cerrada → abierta → la cámara entra a la tarjeta → zoom al universo
+    const vw = this.state.vw;
+    const vh = this.state.vh;
+    const pw = Math.min(1000, 0.92 * vw, (4 / 3) * 0.84 * vh);
+    const ph = pw * 0.75;
+    const ow = Math.min(360, 0.62 * vw, 0.6 * vh * 522 / 683);
+    const oh = ow * 683 / 522;
+    // En el último cuadro del video la tarjeta mide 58.9% del alto y su centro está en (50.5%, 51.4%)
+    const sEnd = Math.max(1, oh / (0.589 * ph));
+    const b = ease(cl((p - 0.36) / 0.32));     // la cámara termina de acercarse y centra la tarjeta
+    const c = ease(cl((p - 0.66) / 0.08));     // relevo a la tarjeta en alta
+    const d = ease(cl((p - 0.80) / 0.20));     // entramos a la tarjeta
+    const tx = -0.005 * pw * b;
+    const ty = (-0.08 * vh - 0.014 * ph) * b;
+    const chispas = Array.from({ length: 14 }, (_, i) => {
+      const ang = i * (360 / 14) + (i % 2) * 9;
+      const dist = 140 + 620 * d + (i % 3) * 40;
+      return {
+        t: 'translate(-50%, -50%) rotate(' + ang + 'deg) translateY(' + (-dist) + 'px) scale(' + (0.6 + 1.8 * d) + ')',
+        o: cl(d * 5) * (1 - cl((d - 0.75) / 0.25))
+      };
+    });
+
+    // Escena 2: la rueda de tarjetas reales se abre
+    const u = ease(cl(q / 0.7));
+    const tarjetas = [
+      { img: '/_blob/3b35f1e68d3d5b387749009c3f50e710', alt: 'Luis Suárez, Leaf Metal, autógrafo' },
+      { img: '/_blob/d86527dd325d6b05e4b75a12b1422ae5', alt: 'Enner Valencia, Panini Prizm, autógrafo' },
+      { img: '/_blob/ef98849b820c5474dbe406c02112c953', alt: 'Cristiano Ronaldo, Donruss Zero Gravity' },
+      { img: '/_blob/3af5fb73a4a4f7852c533a2b341c9b3b', alt: 'Alphonso Davies, Topps Living, PSA 9' },
+      { img: '/_blob/10bf8550622eca632ee462b214604507', alt: 'Andrés Iniesta, Leaf Global Graphs, autógrafo 8/25' },
+      { img: '/_blob/654831aaf6269c446b06fd2428eb3824', alt: 'Marco Pappa, SP Game Used, patch de camiseta' },
+      { img: '/_blob/64833d23562e541a8523600a7a1aec47', alt: 'Tarjeta RC Topps Chrome del Arsenal' },
+      { img: '/_blob/06acc7373d031560fe5f85a240198617', alt: 'Aaron Herrera, Topps' },
+      { img: '/_blob/7df3ee39c2d7e95cb5f64eb803df69e6', alt: 'Carlos Ruiz, SP Game Used' }
+    ];
+    const blade = 80 * (1 - u);
+    const paso = 360 / tarjetas.length;
+    const rueda = tarjetas.map((x, i) => ({
+      ...x,
+      t: 'rotate(' + (i * paso) + 'deg) translateY(-206px) translateX(22px) rotateY(' + blade + 'deg)'
+    }));
+    // Combos: value box + tarjeta sorpresa por categoría
+    const q$ = (n) => 'Q' + n.toLocaleString('en-US');
+    const VALUE = 550;
+    const MEGA = 750;
+    const valueBoxes = [
+      { nombre: 'Panini Select 2025-26 · Value box', corto: 'Select', img: '/_blob/a431b89387837401dbca1dd848bef370', detalle: '24 tarjetas por caja' },
+      { nombre: 'Topps Chrome Bundesliga 2025/26 · Value box', corto: 'Bundesliga', img: '/_blob/cfc15cad644b7323d96fef7528702a84', detalle: '7 sobres de 4 tarjetas' },
+      { nombre: 'Topps Chrome UEFA 2025/26 · Value box', corto: 'UEFA', img: '/_blob/4f9c1a0e5c2bd389fd10a1f17ad37010', detalle: '4 paralelas Raywave exclusivas' },
+      { nombre: 'Topps Merlin Premier League 2026 · Value box', corto: 'Merlin', img: '/_blob/6073098dd06f25eb66333180512e4b8c', detalle: '2 insertos TA-DA exclusivos' },
+      { nombre: 'Topps Premier League Flagship 2026/27 · Value box', corto: 'Flagship', img: '/_blob/75412346cf71514557a5c2a4a1d898aa', detalle: '6 sobres de 10 tarjetas · 4 paralelas Green Voltage y 2 insertos Mayhem' }
+    ];
+    const cats = [
+      { id: 'C', comboN: 600, solaN: 800, texto: 'Para empezar con algo especial. También puede ser una base de un jugador top.' },
+      { id: 'B', comboN: 700, solaN: 900, texto: 'Un paso arriba: numeradas, rookies, paralelas o inserts de mejor nivel.' },
+      { id: 'A', comboN: 850, solaN: 1100, texto: 'Para el que ya colecciona: piezas que se quedan en la vitrina.' },
+      { id: 'AAA', comboN: 999, solaN: 1300, texto: 'Lo mejor de nuestra vitrina para tu combo.' }
+    ].map((c) => ({ ...c, combo: c.comboN, sola: c.solaN }));
+    const megaBoxes = [
+      { nombre: 'Panini Prizm FIFA World Cup 2026 · Mega box', corto: 'Prizm', img: '/_blob/5fa41bb0b9ca9adf1fe83062d36e0630', detalle: '6 sobres de 7 tarjetas' },
+      { nombre: 'Panini Select 2025-26 · Mega box', corto: 'Select Mega', img: '/_blob/1567b3c47b6a301390b5f79d2721c192', detalle: '6 sobres de 10 tarjetas' }
+    ];
+    // Todas las cajas que se pueden combinar: value box (Q550) y mega box (Q750).
+    // El combo suma a la caja lo mismo que en value box: C +Q50, B +Q150, A +Q300, AAA +Q449.
+    const todas = valueBoxes.map((b) => ({ ...b, tipo: 'VALUE BOX', base: VALUE }))
+      .concat(megaBoxes.map((b) => ({ ...b, tipo: 'MEGA BOX', base: MEGA })));
+    const extraDe = (b) => b.base - VALUE;
+    const cajaSel = todas[this.state.caja] || todas[0];
+    const extra = extraDe(cajaSel);
+    const catBase = cats.find((c) => c.id === this.state.cat) || cats[2];
+    const catSel = { ...catBase, comboN: catBase.comboN + extra, combo: q$(catBase.comboN + extra) };
+    const comboCajas = todas.map((b, i) => ({
+      ...b,
+      on: i === this.state.caja,
+      off: i !== this.state.caja,
+      pick: () => this.setState({ caja: i, comboAgregado: false })
+    }));
+    const comboCats = cats.map((c) => ({
+      id: c.id,
+      combo: q$(c.comboN + extra),
+      on: c.id === this.state.cat,
+      off: c.id !== this.state.cat,
+      pick: () => this.setState({ cat: c.id, comboAgregado: false })
+    }));
+    const cajasSelladas = todas.map((b, i) => ({
+      ...b,
+      nombre: b.nombre.split(' · ')[0],
+      precio: q$(b.base),
+      desde: q$(cats[0].comboN + extraDe(b)),
+      llevar: () => this.setState({ caja: i, cat: 'C', comboAgregado: false })
+    }));
+
+    // En pantallas chicas la rueda se escala para caber completa
+    const k = Math.min(1, Math.min(vw - 24, 0.46 * vh * 1.1) / 600);
+
+    return {
+      pw: pw,
+      ph: ph,
+      pmx: -pw / 2,
+      pmy: -ph / 2,
+      photoT: 'translate(' + tx + 'px, ' + ty + 'px) scale(' + (1 + (sEnd - 1) * b) + ')',
+      photoO: 1 - c,
+      ow: ow,
+      introO: 1 - cl(p / 0.06),
+      introY: -50 * cl(p / 0.06),
+      hintO: 1 - cl(p / 0.04),
+      cardT: 'rotateX(' + (12 * (1 - c)) + 'deg) scale(' + (1 + 3.2 * d) + ')',
+      cardO: c * (1 - d),
+      captionO: cl((p - 0.72) / 0.06) * (1 - cl(d * 4)),
+      chispas,
+      ruedaT: 'rotateX(' + (64 * (1 - u)) + 'deg) scale(' + (k * (0.78 + 0.22 * u)) + ')',
+      uniO: 0.25 + 0.75 * cl(q / 0.35),
+      uniY: 40 * (1 - cl(q / 0.35)),
+      rueda,
+      fila: tarjetas.concat(tarjetas),
+      productos: [
+        { href: 'Producto.dc.html', img: '/_blob/5799fdb7a106a24662ab07756a99c85e', alt: 'Tarjeta autografiada de Luis Suárez', sinFoto: false, rareza: 'AUTO', estado: 'DISPONIBLE', nombre: 'Luis Suárez', detalle: 'Leaf Metal · Autógrafo', precio: 'Q[PRECIO]' },
+        { href: 'Producto.dc.html', img: '/_blob/cac8fcc0ce84e92c21406b30066385ec', alt: 'Caja cerrada de El Coleccionista', sinFoto: false, rareza: '', estado: 'CAJA · NIVEL 01', nombre: 'Caja El Coleccionista', detalle: 'Al menos 1 hit garantizado', precio: 'Q[PRECIO]' },
+        { href: 'Producto.dc.html', img: '/_blob/d86527dd325d6b05e4b75a12b1422ae5', alt: 'Tarjeta autografiada de Enner Valencia, Panini Prizm', sinFoto: false, rareza: 'AUTO', estado: 'DISPONIBLE', nombre: 'Enner Valencia', detalle: 'Panini Prizm · Autógrafo', precio: 'Q[PRECIO]' },
+        { href: 'Producto.dc.html', img: '/_blob/10bf8550622eca632ee462b214604507', alt: 'Tarjeta autografiada de Andrés Iniesta, Leaf Global Graphs, numerada 8/25', sinFoto: false, rareza: '8/25', estado: 'DISPONIBLE', nombre: 'Andrés Iniesta', detalle: 'Leaf Global Graphs · Autógrafo', precio: 'Q[PRECIO]' }
+      ],
+      caja: cajaSel,
+      cat: catSel,
+      comboCajas,
+      comboCats,
+      categorias: cats.map((c) => ({ ...c, combo: q$(c.combo), sola: q$(c.sola) })),
+      separado: q$(cajaSel.base + catSel.solaN),
+      ahorro: q$(cajaSel.base + catSel.solaN - catSel.comboN),
+      comboAgregado: this.state.comboAgregado,
+      agregarCombo: () => this.setState({ comboAgregado: true }),
+      cajasSelladas,
+      terminos: [
+        { sigla: 'RC', titulo: 'Rookie card', texto: 'RC es la tarjeta que marca el debut de un jugador en una colección oficial.' },
+        { sigla: 'AUTO', titulo: 'Autógrafo', texto: 'Lleva la firma del jugador, sobre la tarjeta o en una etiqueta adherida.' },
+        { sigla: '10/50', titulo: 'Numerada', texto: 'Trae un número de serie: 10/50 es la décima de solo cincuenta.' },
+        { sigla: 'PATCH', titulo: 'Patch', texto: 'Incluye un pedazo de tela de una camiseta usada por el jugador.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

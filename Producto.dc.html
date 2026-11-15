@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>El Coleccionista · Luis Suárez, Leaf Metal</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Caveat:wght@500&amp;family=Inter:wght@400;500;600&amp;family=Pixelify+Sans:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#07122D}
+a{color:#F7F4E8}a:hover{color:#FFC632}
+.lift{transition:transform .15s ease}.lift:hover{transform:translateY(-4px)}
+.navlink{color:#F7F4E8;text-decoration:none}.navlink:hover{color:#FFC632}
+input::placeholder{color:#8993A3}
+</style>
+</helmet>
+<div style="background: #07122D; color: #F7F4E8; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.5; min-height: 100vh">
+
+  <div style="background: #101E45; padding: 8px 24px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">
+    <span>CADA TARJETA TIENE UNA HISTORIA</span>
+    <span>SÍGUENOS EN @ELCOLECCIONISTACOM</span>
+  </div>
+
+  <header style="border-bottom: 1px solid rgba(137,147,163,0.35)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 32px; flex-wrap: wrap">
+      <a href="Main.dc.html" aria-label="El Coleccionista, inicio" style="display: block; line-height: 0">
+        <img src="/_blob/5191c3ffe6d040bf6d38cdea2becd1dc" alt="El Coleccionista · Tarjetas de fútbol" style="height: 72px; width: auto">
+      </a>
+      <nav aria-label="Principal" style="display: flex; gap: 28px; flex-wrap: wrap; font-weight: 600; font-size: 15px">
+        <a class="navlink" href="Catalogo.dc.html">Tienda</a>
+        <a class="navlink" href="Catalogo.dc.html">Tarjetas sueltas</a>
+        <a class="navlink" href="Main.dc.html#cajas">Cajas con hits</a>
+        <a class="navlink" href="Main.dc.html#aprende">Aprende</a>
+        <a class="navlink" href="Main.dc.html#vending">Vending</a>
+      </nav>
+      <div style="flex: 1 1 200px; display: flex; justify-content: flex-end; align-items: center; gap: 12px">
+        <label for="buscar-ficha" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Buscar</label>
+        <div style="display: flex; align-items: center; gap: 8px; border: 1px solid rgba(137,147,163,0.5); padding: 0 12px; height: 44px; flex: 0 1 260px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8993A3" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <input id="buscar-ficha" type="search" placeholder="Busca un jugador o colección" style="background: transparent; border: 0; color: #F7F4E8; font: inherit; font-size: 14px; width: 100%; outline: none">
+        </div>
+        <a href="#" aria-label="Mi cuenta" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg>
+        </a>
+        <a href="Carrito.dc.html" aria-label="Carrito, {{enCarrito}} artículos" style="position: relative; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2" aria-hidden="true"><path d="M3 4h2l2.4 11h11.2L21 7H6.2"></path><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle></svg>
+          <span style="position: absolute; top: 2px; right: 0; background: #F7F4E8; color: #07122D; font-size: 11px; font-weight: 600; min-width: 18px; height: 18px; display: flex; align-items: center; justify-content: center">{{enCarrito}}</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Ficha -->
+  <section style="max-width: 1280px; margin: 0 auto; padding: 32px 24px 96px">
+    <nav aria-label="Ruta" style="font-size: 13px; color: #8993A3; display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px">
+      <a href="Main.dc.html" style="color: #8993A3">Inicio</a><span aria-hidden="true">/</span>
+      <a href="Catalogo.dc.html" style="color: #8993A3">Tarjetas sueltas</a><span aria-hidden="true">/</span>
+      <span>Luis Suárez · Leaf Metal</span>
+    </nav>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+      <!-- Galería -->
+      <div style="flex: 1 1 520px; min-width: 0; display: flex; gap: 16px; flex-wrap: wrap-reverse">
+        <div role="tablist" aria-label="Vistas de la tarjeta" style="display: flex; flex-direction: column; gap: 12px; flex: 0 0 88px">
+          <sc-for list="{{vistas}}" as="v" hint-placeholder-count="3">
+            <button type="button" role="tab" aria-selected="{{v.sel}}" aria-label="{{v.label}}" onClick="{{v.pick}}" style="width: 88px; height: 110px; padding: 0; background: #101E45; border: 2px solid {{v.borde}}; border-radius: 0; cursor: pointer; overflow: hidden; display: flex; align-items: center; justify-content: center">
+              <sc-if value="{{v.foto}}" hint-placeholder-val="{{ true }}">
+                <img src="/_blob/5799fdb7a106a24662ab07756a99c85e" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: {{v.pos}}">
+              </sc-if>
+              <sc-if value="{{v.hueco}}" hint-placeholder-val="{{ false }}">
+                <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 12px; color: #8993A3">Reverso</span>
+              </sc-if>
+            </button>
+          </sc-for>
+        </div>
+        <div style="flex: 1 1 360px; min-width: 0; position: relative; background: #07122D; overflow: hidden; display: flex; align-items: center; justify-content: center">
+          <div aria-hidden="true" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: Anton, Impact, sans-serif; font-size: 620px; line-height: 1; color: #101E45; user-select: none">9</div>
+          <sc-if value="{{verFrente}}" hint-placeholder-val="{{ true }}">
+            <img src="/_blob/5799fdb7a106a24662ab07756a99c85e" alt="Frente: Luis Suárez con la camiseta 9 de Uruguay, firma en tinta azul" style="position: relative; width: 100%; max-width: 520px; height: auto; display: block">
+          </sc-if>
+          <sc-if value="{{verDetalle}}" hint-placeholder-val="{{ false }}">
+            <div style="position: relative; width: 100%; max-width: 520px; aspect-ratio: 1122 / 1402; overflow: hidden">
+              <img src="/_blob/5799fdb7a106a24662ab07756a99c85e" alt="Detalle de la firma en tinta azul" style="width: 100%; height: 100%; object-fit: cover; transform: scale(2.2); transform-origin: 40% 61%">
+            </div>
+          </sc-if>
+          <sc-if value="{{verReverso}}" hint-placeholder-val="{{ false }}">
+            <div style="position: relative; width: 100%; max-width: 520px; aspect-ratio: 1122 / 1402; display: flex; align-items: center; justify-content: center">
+              <div style="width: 62%; aspect-ratio: 5 / 8; border: 2px solid rgba(137,147,163,0.6); display: flex; align-items: center; justify-content: center; background: #101E45">
+                <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 20px; color: #8993A3">Foto del reverso</span>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <!-- Información -->
+      <div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+        <div style="display: flex; gap: 8px; align-items: center">
+          <span style="background: #FFC632; color: #07122D; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 4px 10px">AUTO</span>
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">DISPONIBLE · 1 EN EXISTENCIA</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <h1 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(56px, 6vw, 88px); line-height: 0.95; text-transform: uppercase">Luis Suárez</h1>
+          <span style="font-size: 18px; color: #8993A3">Leaf Metal · Autógrafo · Uruguay</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap">
+          <span style="font-family: Anton, Impact, sans-serif; font-size: 48px; line-height: 1">Q[PRECIO]</span>
+          <span style="font-size: 13px; color: #8993A3">Precio de referencia: Q[PRECIO] · [FUENTE], [FECHA]</span>
+        </div>
+
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: stretch">
+          <div style="display: flex; align-items: center; border: 1px solid rgba(137,147,163,0.6); height: 56px">
+            <button type="button" aria-label="Quitar uno" onClick="{{menos}}" style="width: 48px; height: 100%; background: transparent; border: 0; color: #F7F4E8; cursor: pointer; display: flex; align-items: center; justify-content: center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14"></path></svg>
+            </button>
+            <span aria-live="polite" style="min-width: 32px; text-align: center; font-family: Anton, Impact, sans-serif; font-size: 22px">{{cantidad}}</span>
+            <button type="button" aria-label="Agregar uno" onClick="{{mas}}" style="width: 48px; height: 100%; background: transparent; border: 0; color: #F7F4E8; cursor: pointer; display: flex; align-items: center; justify-content: center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg>
+            </button>
+          </div>
+          <button type="button" onClick="{{agregar}}" style="flex: 1 1 220px; height: 56px; background: #F7F4E8; color: #07122D; border: 0; border-radius: 0; font-family: Anton, Impact, sans-serif; font-size: 22px; letter-spacing: 0.02em; text-transform: uppercase; box-shadow: 4px 4px 0 #101014; cursor: pointer">Agregar al carrito</button>
+        </div>
+        <sc-if value="{{agregado}}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 16px; background: #101E45; border: 1px solid rgba(137,147,163,0.5)">
+            <span style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2.5" aria-hidden="true"><path d="M4 12l5 5L20 6"></path></svg>
+              Lista. Ya está en tu carrito.
+            </span>
+            <a href="Carrito.dc.html" style="font-size: 14px; font-weight: 600">Ver carrito</a>
+          </div>
+        </sc-if>
+        <a href="#" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 52px; background: #005DDB; color: #F7F4E8; text-decoration: none; font-weight: 600; font-size: 15px; box-shadow: 4px 4px 0 #101014">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path></svg>
+          Pregúntanos por esta tarjeta
+        </a>
+
+        <!-- Datos -->
+        <dl style="margin: 8px 0 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); border-top: 1px solid rgba(137,147,163,0.4)">
+          <sc-for list="{{datos}}" as="d" hint-placeholder-count="8">
+            <dt style="padding: 12px 0; border-bottom: 1px solid rgba(137,147,163,0.4); font-size: 14px; color: #8993A3">{{d.k}}</dt>
+            <dd style="margin: 0; padding: 12px 0; border-bottom: 1px solid rgba(137,147,163,0.4); font-size: 14px; font-weight: 500">{{d.v}}</dd>
+          </sc-for>
+        </dl>
+
+        <div style="display: flex; gap: 24px; flex-wrap: wrap; font-size: 14px; color: #F7F4E8">
+          <span style="display: flex; align-items: center; gap: 8px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="1.8" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"></path><circle cx="7" cy="17.5" r="1.5"></circle><circle cx="17" cy="17.5" r="1.5"></circle></svg>
+            Envío a domicilio en Guatemala
+          </span>
+          <span style="display: flex; align-items: center; gap: 8px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+            Recoge en [PUNTO DE ENTREGA]
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Historia -->
+  <section aria-labelledby="historia-titulo" style="background: #101E45">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+      <div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 12px">
+        <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 18px; color: #8993A3">La historia</span>
+        <h2 id="historia-titulo" style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 56px; line-height: 1; text-transform: uppercase">El 9 con el brazalete</h2>
+        <span style="font-family: Caveat, cursive; font-weight: 500; font-size: 36px; line-height: 1.1; padding-top: 8px">esta sí nos hizo gritar</span>
+      </div>
+      <div style="flex: 2 1 520px; display: flex; flex-direction: column; gap: 16px; font-size: 17px; max-width: 680px">
+        <p style="margin: 0">En esta foto Suárez lleva la 9 de Uruguay y el brazalete de capitán. La firma va en el recuadro blanco, en tinta azul, sobre un fondo rojo de cristales que brilla distinto con cada luz.</p>
+        <p style="margin: 0; color: #8993A3">[Agrega aquí lo que sabemos de esta tarjeta: de qué caja salió, cuántas existen y por qué nos gusta.]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- También en la vitrina -->
+  <section aria-labelledby="rel-titulo" style="max-width: 1280px; margin: 0 auto; padding: 96px 24px 112px">
+    <h2 id="rel-titulo" style="margin: 0 0 32px; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 44px; line-height: 1; text-transform: uppercase">También en la vitrina</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px">
+      <a href="Producto.dc.html" class="lift" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none; color: #F7F4E8">
+        <div style="aspect-ratio: 4 / 5; overflow: hidden"><img src="/_blob/cac8fcc0ce84e92c21406b30066385ec" alt="Caja cerrada de El Coleccionista" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">NIVEL 01</span>
+        <span style="font-family: Anton, Impact, sans-serif; font-size: 24px; line-height: 1.05; text-transform: uppercase">Caja El Coleccionista</span>
+        <span style="font-family: Anton, Impact, sans-serif; font-size: 22px; line-height: 1">Q[PRECIO]</span>
+      </a>
+      <sc-for list="{{relacionados}}" as="r" hint-placeholder-count="3">
+        <a href="Producto.dc.html" class="lift" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none; color: #F7F4E8">
+          <div style="aspect-ratio: 4 / 5; background: #101E45; display: flex; align-items: center; justify-content: center">
+            <div style="width: 58%; aspect-ratio: 5 / 8; border: 2px solid rgba(137,147,163,0.6); display: flex; align-items: center; justify-content: center">
+              <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 14px; color: #8993A3">Foto real</span>
+            </div>
+          </div>
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: #8993A3">DISPONIBLE</span>
+          <span style="font-family: Anton, Impact, sans-serif; font-size: 24px; line-height: 1.05; text-transform: uppercase">{{r.nombre}}</span>
+          <span style="font-family: Anton, Impact, sans-serif; font-size: 22px; line-height: 1">Q[PRECIO]</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <footer style="background: #101014; border-top: 1px solid rgba(137,147,163,0.35)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 32px 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #8993A3">
+      <span>© 2026 El Coleccionista · Guatemala</span>
+      <span>Coleccionamos por el gusto de coleccionar. No presentamos ninguna tarjeta como inversión.</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2500}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { vista: 0, cantidad: 1, agregado: false, base: 2 };
+  }
+  renderVals() {
+    const s = this.state;
+    const defs = [
+      { label: 'Frente', foto: true, pos: '50% 40%' },
+      { label: 'Detalle de la firma', foto: true, pos: '40% 62%' },
+      { label: 'Reverso', foto: false, pos: '' }
+    ];
+    const vistas = defs.map((d, i) => ({
+      label: d.label,
+      foto: d.foto,
+      hueco: !d.foto,
+      pos: d.pos,
+      sel: i === s.vista ? 'true' : 'false',
+      borde: i === s.vista ? '#F7F4E8' : 'rgba(137,147,163,0.35)',
+      pick: () => this.setState({ vista: i })
+    }));
+    return {
+      vistas,
+      verFrente: s.vista === 0,
+      verDetalle: s.vista === 1,
+      verReverso: s.vista === 2,
+      cantidad: s.cantidad,
+      agregado: s.agregado,
+      enCarrito: s.agregado ? s.base + s.cantidad : s.base,
+      menos: () => this.setState({ cantidad: Math.max(1, s.cantidad - 1) }),
+      mas: () => this.setState({ cantidad: Math.min(1, s.cantidad + 1) }),
+      agregar: () => this.setState({ agregado: true }),
+      datos: [
+        { k: 'Jugador', v: 'Luis Suárez' },
+        { k: 'Selección', v: 'Uruguay' },
+        { k: 'Colección', v: 'Leaf Metal' },
+        { k: 'Tipo', v: 'Autógrafo' },
+        { k: 'Año', v: '[AÑO]' },
+        { k: 'Numeración', v: '[CONFIRMAR]' },
+        { k: 'Condición', v: '[CONDICIÓN]' },
+        { k: 'Protección', v: 'Estuche magnético' }
+      ],
+      relacionados: [
+        { nombre: '[Jugador]' },
+        { nombre: '[Jugador]' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

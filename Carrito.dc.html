@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>El Coleccionista · Carrito y pago</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Caveat:wght@500&amp;family=Inter:wght@400;500;600&amp;family=Pixelify+Sans:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#07122D}
+a{color:#F7F4E8}a:hover{color:#FFC632}
+input::placeholder{color:#8993A3}
+.campo{height:48px;padding:0 14px;background:#07122D;border:1px solid rgba(137,147,163,0.6);color:#F7F4E8;font:inherit;font-size:15px;border-radius:0;width:100%;box-sizing:border-box}
+.notch{clip-path:polygon(0 4px,4px 4px,4px 0,calc(100% - 4px) 0,calc(100% - 4px) 4px,100% 4px,100% calc(100% - 4px),calc(100% - 4px) calc(100% - 4px),calc(100% - 4px) 100%,4px 100%,4px calc(100% - 4px),0 calc(100% - 4px))}
+</style>
+</helmet>
+<div style="background: #07122D; color: #F7F4E8; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.5; min-height: 100vh">
+
+  <header style="border-bottom: 1px solid rgba(137,147,163,0.35)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+      <a href="Main.dc.html" aria-label="El Coleccionista, inicio" style="display: block; line-height: 0">
+        <img src="/_blob/5191c3ffe6d040bf6d38cdea2becd1dc" alt="El Coleccionista · Tarjetas de fútbol" style="height: 64px; width: auto">
+      </a>
+      <a href="Catalogo.dc.html" style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; min-height: 44px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+        Seguir viendo la vitrina
+      </a>
+    </div>
+  </header>
+
+  <sc-if value="{{confirmado}}" hint-placeholder-val="{{ false }}">
+    <section style="max-width: 720px; margin: 0 auto; padding: 120px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px">
+      <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 20px; color: #8993A3">Pedido recibido</span>
+      <h1 style="margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 72px; line-height: 1; text-transform: uppercase">Ya viene en camino</h1>
+      <p style="margin: 0; font-size: 17px; max-width: 520px">Te escribimos para coordinar la entrega. Mientras tanto, cuéntanos en Instagram qué te salió.</p>
+      <span style="font-family: Caveat, cursive; font-weight: 500; font-size: 36px; padding-top: 8px">cada tarjeta tiene una historia</span>
+      <a href="Main.dc.html" style="margin-top: 16px; display: inline-flex; align-items: center; height: 52px; padding: 0 28px; background: #F7F4E8; color: #07122D; text-decoration: none; font-family: Anton, Impact, sans-serif; font-size: 20px; text-transform: uppercase; box-shadow: 4px 4px 0 #101014">Volver al inicio</a>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{editando}}" hint-placeholder-val="{{ true }}">
+    <section style="max-width: 1280px; margin: 0 auto; padding: 48px 24px 112px">
+      <h1 style="margin: 0 0 40px; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: clamp(48px, 6vw, 80px); line-height: 1; text-transform: uppercase">Tu carrito</h1>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+        <!-- Columna izquierda -->
+        <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 56px">
+
+          <!-- Artículos -->
+          <div style="border-top: 1px solid rgba(137,147,163,0.4)">
+            <div style="display: flex; gap: 24px; padding: 24px 0; border-bottom: 1px solid rgba(137,147,163,0.4); align-items: center; flex-wrap: wrap">
+              <img src="/_blob/5799fdb7a106a24662ab07756a99c85e" alt="Tarjeta de Luis Suárez" style="width: 96px; height: 120px; object-fit: cover">
+              <div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 4px">
+                <div style="display: flex; gap: 8px; align-items: center">
+                  <span style="background: #FFC632; color: #07122D; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 2px 8px">AUTO</span>
+                </div>
+                <span style="font-family: Anton, Impact, sans-serif; font-size: 26px; line-height: 1.1; text-transform: uppercase">Luis Suárez</span>
+                <span style="font-size: 14px; color: #8993A3">Leaf Metal · Autógrafo · Pieza única en tienda</span>
+              </div>
+              <span style="font-family: Anton, Impact, sans-serif; font-size: 26px">Q[PRECIO]</span>
+              <button type="button" aria-label="Quitar Luis Suárez del carrito" style="width: 44px; height: 44px; background: transparent; border: 1px solid rgba(137,147,163,0.5); border-radius: 0; cursor: pointer; display: flex; align-items: center; justify-content: center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+              </button>
+            </div>
+            <div style="display: flex; gap: 24px; padding: 24px 0; border-bottom: 1px solid rgba(137,147,163,0.4); align-items: center; flex-wrap: wrap">
+              <img src="/_blob/4f9c1a0e5c2bd389fd10a1f17ad37010" alt="Value box Topps Chrome UEFA 2025/26" style="width: 96px; height: 120px; object-fit: contain; background: #101E45; padding: 8px; box-sizing: border-box">
+              <div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 4px">
+                <span style="font-family: 'Pixelify Sans', monospace; font-weight: 700; font-size: 14px; color: #8993A3">Combo</span>
+                <span style="font-family: Anton, Impact, sans-serif; font-size: 26px; line-height: 1.1; text-transform: uppercase">Topps Chrome UEFA + categoría A</span>
+                <span style="font-size: 14px; color: #8993A3">Value box sellada + tarjeta sorpresa · Ahorras Q800</span>
+              </div>
+              <span style="font-family: Anton, Impact, sans-serif; font-size: 26px">Q850</span>
+              <button type="button" aria-label="Quitar el combo del carrito" style="width: 44px; height: 44px; background: transparent; border: 1px solid rgba(137,147,163,0.5); border-radius: 0; cursor: pointer; display: flex; align-items: center; justify-content: center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F7F4E8" stroke-width="2.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Entrega -->
+          <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px">
+            <legend style="font-family: Anton, Impact, sans-serif; font-size: 32px; line-height: 1; text-transform: uppercase; padding: 0 0 20px">1. Entrega</legend>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+              <sc-for list="{{entregas}}" as="e" hint-placeholder-count="2">
+                <button type="button" aria-pressed="{{e.sel}}" onClick="{{e.pick}}" style="text-align: left; padding: 20px; background: {{e.fondo}}; color: #F7F4E8; border: 2px solid {{e.borde}}; border-radius: 0; cursor: pointer; display: flex; flex-direction: column; gap: 6px; font: inherit">
+                  <span style="font-weight: 600; font-size: 16px">{{e.titulo}}</span>
+                  <span style="font-size: 14px; color: #8993A3">{{e.texto}}</span>
+                </button>
+              </sc-for>
+            </div>
+          </fieldset>
+
+          <!-- Datos -->
+          <fieldset style="border: 0; margin: 0; padding: 0">
+            <legend style="font-family: Anton, Impact, sans-serif; font-size: 32px; line-height: 1; text-transform: uppercase; padding: 0 0 20px">2. Tus datos</legend>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">Nombre completo<input class="campo" type="text" autocomplete="name"></label>
+              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">WhatsApp<input class="campo" type="tel" placeholder="+502" autocomplete="tel"></label>
+              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">Correo<input class="campo" type="email" autocomplete="email"></label>
+              <sc-if value="{{conEnvio}}" hint-placeholder-val="{{ true }}">
+                <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">Departamento y municipio<input class="campo" type="text"></label>
+              </sc-if>
+            </div>
+            <sc-if value="{{conEnvio}}" hint-placeholder-val="{{ true }}">
+              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500; margin-top: 16px">Dirección de entrega<input class="campo" type="text" autocomplete="street-address"></label>
+            </sc-if>
+          </fieldset>
+
+          <!-- Pago -->
+          <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px">
+            <legend style="font-family: Anton, Impact, sans-serif; font-size: 32px; line-height: 1; text-transform: uppercase; padding: 0 0 20px">3. Pago</legend>
+            <label style="display: flex; align-items: center; gap: 14px; padding: 16px; border: 1px solid rgba(137,147,163,0.5); font-size: 15px; cursor: pointer"><input type="radio" name="pago" checked style="accent-color: #F7F4E8; width: 18px; height: 18px"> Tarjeta de crédito o débito</label>
+            <label style="display: flex; align-items: center; gap: 14px; padding: 16px; border: 1px solid rgba(137,147,163,0.5); font-size: 15px; cursor: pointer"><input type="radio" name="pago" style="accent-color: #F7F4E8; width: 18px; height: 18px"> Transferencia o depósito bancario</label>
+            <label style="display: flex; align-items: center; gap: 14px; padding: 16px; border: 1px solid rgba(137,147,163,0.5); font-size: 15px; cursor: pointer"><input type="radio" name="pago" style="accent-color: #F7F4E8; width: 18px; height: 18px"> Pago al recibir</label>
+          </fieldset>
+        </div>
+
+        <!-- Resumen -->
+        <aside aria-label="Resumen del pedido" class="notch" style="flex: 1 1 340px; min-width: 0; background: #101E45; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+          <h2 style="margin: 0 0 8px; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 32px; line-height: 1; text-transform: uppercase">Resumen</h2>
+          <div style="display: flex; justify-content: space-between; font-size: 15px"><span>Subtotal · 2 artículos</span><span>Q[SUBTOTAL]</span></div>
+          <div style="display: flex; justify-content: space-between; font-size: 15px"><span>{{lineaEntrega}}</span><span>{{costoEntrega}}</span></div>
+          <div style="border-top: 1px solid rgba(137,147,163,0.5); padding-top: 16px; display: flex; justify-content: space-between; align-items: baseline">
+            <span style="font-weight: 600">Total</span>
+            <span style="font-family: Anton, Impact, sans-serif; font-size: 40px; line-height: 1">Q[TOTAL]</span>
+          </div>
+          <label for="cupon" style="font-size: 14px; font-weight: 500; padding-top: 8px">Código de descuento</label>
+          <div style="display: flex; gap: 8px">
+            <input id="cupon" class="campo" type="text" placeholder="Ej. SORTEO">
+            <button type="button" style="height: 48px; padding: 0 16px; background: #005DDB; color: #F7F4E8; border: 0; border-radius: 0; font: inherit; font-weight: 600; font-size: 14px; cursor: pointer">Aplicar</button>
+          </div>
+          <button type="button" onClick="{{confirmar}}" style="margin-top: 12px; height: 60px; background: #F7F4E8; color: #07122D; border: 0; border-radius: 0; font-family: Anton, Impact, sans-serif; font-size: 24px; letter-spacing: 0.02em; text-transform: uppercase; box-shadow: 4px 4px 0 #101014; cursor: pointer">Confirmar pedido</button>
+          <p style="margin: 0; font-size: 13px; color: #8993A3">Revisamos cada tarjeta antes de enviarla. Si algo no coincide con la foto, te escribimos antes de despachar.</p>
+        </aside>
+      </div>
+    </section>
+  </sc-if>
+
+  <footer style="background: #101014; border-top: 1px solid rgba(137,147,163,0.35)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 32px 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #8993A3">
+      <span>© 2026 El Coleccionista · Guatemala</span>
+      <span>Coleccionamos por el gusto de coleccionar. No presentamos ninguna tarjeta como inversión.</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { entrega: 'envio', confirmado: false };
+  }
+  renderVals() {
+    const s = this.state;
+    const opciones = [
+      { id: 'envio', titulo: 'Envío a domicilio', texto: 'A cualquier departamento de Guatemala.' },
+      { id: 'recoger', titulo: 'Recoger en persona', texto: '[PUNTO DE ENTREGA] · [HORARIO]' }
+    ];
+    const entregas = opciones.map((o) => ({
+      ...o,
+      sel: o.id === s.entrega ? 'true' : 'false',
+      fondo: o.id === s.entrega ? '#101E45' : 'transparent',
+      borde: o.id === s.entrega ? '#F7F4E8' : 'rgba(137,147,163,0.5)',
+      pick: () => this.setState({ entrega: o.id })
+    }));
+    const conEnvio = s.entrega === 'envio';
+    return {
+      entregas,
+      conEnvio,
+      lineaEntrega: conEnvio ? 'Envío' : 'Recoger en persona',
+      costoEntrega: conEnvio ? 'Q[COSTO]' : 'Sin costo',
+      confirmado: s.confirmado,
+      editando: !s.confirmado,
+      confirmar: () => this.setState({ confirmado: true })
+    };
+  }
+}
+</script>
+</body>
+</html>
