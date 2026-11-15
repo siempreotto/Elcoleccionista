@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import { clamp01, easeInOutCubic as ease, sectionProgress, usePrefersReducedMotion, useScrollFrame } from '@/lib/motion';
 import { buttonClass } from '@/components/ui';
+import { optimized } from '@/lib/images';
 
 export type ShowcaseCard = { url: string; alt: string; href: string | null };
 
@@ -29,7 +30,6 @@ export function UniverseWheel({ cards }: { cards: ShowcaseCard[] }) {
       if (el) el.style.transform = `rotate(${i * step}deg) translateY(-206px) translateX(22px) rotateY(${blade}deg)`;
     });
     if (textRef.current) {
-      textRef.current.style.opacity = String(0.25 + 0.75 * clamp01(q / 0.35));
       textRef.current.style.transform = `translateY(${40 * (1 - clamp01(q / 0.35))}px)`;
     }
   }, [reduced, cards.length]);
@@ -61,8 +61,9 @@ export function UniverseWheel({ cards }: { cards: ShowcaseCard[] }) {
                     tilesRef.current[i] = el;
                   }}
                   className="ec-tile absolute block max-w-none"
-                  src={c.url}
+                  src={optimized(c.url, 256)}
                   alt={c.alt}
+                  loading="lazy"
                   decoding="async"
                   width={132}
                   height={165}

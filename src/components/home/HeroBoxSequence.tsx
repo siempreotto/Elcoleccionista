@@ -52,15 +52,23 @@ export function HeroBoxSequence() {
       frames.current[i] = im;
     };
     load(0);
+    // El resto se precarga cuando el navegador está libre, o de inmediato si la persona ya empezó a bajar.
+    let started = false;
     const start = () => {
+      if (started) return;
+      started = true;
       for (let i = 1; i < FRAME_COUNT; i++) load(i);
     };
-    if (document.readyState === 'complete') {
-      const id = window.setTimeout(start, 150);
-      return () => window.clearTimeout(id);
-    }
-    window.addEventListener('load', start, { once: true });
-    return () => window.removeEventListener('load', start);
+    const onScroll = () => start();
+    window.addEventListener('scroll', onScroll, { once: true, passive: true });
+    const w = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number };
+    const idle = () => (w.requestIdleCallback ? w.requestIdleCallback(start, { timeout: 4000 }) : window.setTimeout(start, 2500));
+    if (document.readyState === 'complete') idle();
+    else window.addEventListener('load', idle, { once: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('load', idle);
+    };
   }, []);
 
   useScrollFrame(() => {
@@ -169,6 +177,7 @@ export function HeroBoxSequence() {
             width={HD_W}
             height={HD_H}
             decoding="async"
+            fetchPriority="low"
             className="h-auto rounded-[10px]"
             style={{ width: 'min(360px, 62vw)', opacity: 0 }}
           />

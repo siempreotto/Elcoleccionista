@@ -1,5 +1,6 @@
 import type { ShowcaseCard } from './UniverseWheel';
 import { PixelLabel } from '@/components/ui';
+import { optimized } from '@/lib/images';
 
 /** Vitrina infinita: fila en perspectiva que avanza sola (60 s), con la lista duplicada. */
 export function InfiniteShowcase({ cards }: { cards: ShowcaseCard[] }) {
@@ -23,7 +24,7 @@ export function InfiniteShowcase({ cards }: { cards: ShowcaseCard[] }) {
               <img
                 key={i}
                 className="ec-tile block max-w-none flex-none [transform:rotateY(-44deg)]"
-                src={c.url}
+                src={optimized(c.url, 640)}
                 alt=""
                 loading="lazy"
                 decoding="async"

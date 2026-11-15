@@ -41,11 +41,11 @@ type RawCatalog = { products: (ProductRow & { product_images: ImageRow[] })[]; c
 
 /**
  * Solo para desarrollo local sin acceso a Supabase: EC_CATALOG_FIXTURE apunta a un JSON con
- * la misma forma que la base. Nunca se activa en producción.
+ * la misma forma que la base. Nunca se activa en Vercel.
  */
 async function readFixture(): Promise<RawCatalog | null> {
   const path = process.env.EC_CATALOG_FIXTURE;
-  if (!path || process.env.NODE_ENV === 'production') return null;
+  if (!path || process.env.VERCEL) return null;
   const fs = await import('node:fs/promises');
   return JSON.parse(await fs.readFile(path, 'utf8')) as RawCatalog;
 }

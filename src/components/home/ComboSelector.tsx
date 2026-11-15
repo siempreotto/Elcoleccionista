@@ -6,6 +6,7 @@ import { formatQ } from '@/lib/format';
 import { comboPrice, comboSavings, separatePrice, type PricingCategory, type PricingSettings } from '@/lib/pricing';
 import type { BoxLite } from '@/lib/views';
 import { HandNote } from '@/components/ui';
+import { optimized } from '@/lib/images';
 
 export const COMBO_EVENT = 'ec:combo-select';
 export type ComboSelectDetail = { boxId: string; category: string };
@@ -46,7 +47,7 @@ export function ComboSelector({ boxes, categories, settings }: { boxes: BoxLite[
         </div>
         {box.img && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={box.img} alt={box.alt} width={300} height={300} className="relative block h-auto w-[min(300px,70%)]" />
+          <img src={optimized(box.img, 384)} alt={box.alt} width={300} height={300} loading="lazy" decoding="async" className="relative block h-auto w-[min(300px,70%)]" />
         )}
         <HandNote className="relative">+ una tarjeta categoría {cat.id}</HandNote>
       </div>
@@ -73,7 +74,7 @@ export function ComboSelector({ boxes, categories, settings }: { boxes: BoxLite[
                 >
                   {b.img && (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={b.img} alt="" width={72} height={72} className={`h-auto w-full max-w-[72px] ${on ? '' : 'opacity-75'}`} />
+                    <img src={optimized(b.img, 128)} alt="" width={72} height={72} loading="lazy" decoding="async" className={`h-auto w-full max-w-[72px] ${on ? '' : 'opacity-75'}`} />
                   )}
                 </button>
               );

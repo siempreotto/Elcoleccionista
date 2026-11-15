@@ -9,7 +9,6 @@ export function ComboCTA({ boxId, from }: { boxId: string; from: string }) {
       onClick={() => {
         window.dispatchEvent(new CustomEvent<ComboSelectDetail>(COMBO_EVENT, { detail: { boxId, category: 'C' } }));
       }}
-      aria-label={`Llévala en combo con una tarjeta especial desde ${from}`}
       className="ec-combo-btn flex flex-col gap-2 border-2 border-gold bg-blue px-4 py-3.5 text-cream no-underline shadow-hard"
     >
       <span className="flex items-center justify-between gap-2">
@@ -20,7 +19,7 @@ export function ComboCTA({ boxId, from }: { boxId: string; from: string }) {
       </span>
       <span className="flex flex-wrap items-baseline justify-between gap-2">
         <span className="font-display text-[22px] uppercase leading-[1.05]">Llévala en combo</span>
-        <span className="font-display text-[22px] leading-none text-gold">desde {from}</span>
+        <span className="font-display text-2xl leading-none text-gold">desde {from}</span>
       </span>
       <span className="text-[13px] font-medium leading-[1.35]">+ una tarjeta especial: autógrafo, numerada o patch</span>
     </a>
