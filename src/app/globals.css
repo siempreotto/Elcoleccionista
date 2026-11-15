@@ -1,0 +1,125 @@
+@import 'tailwindcss';
+
+/* Tokens de marca El Coleccionista (_handoff/brand/tokens.json) */
+@theme {
+  --color-navy: #07122d;
+  --color-surface: #101e45;
+  --color-cream: #f7f4e8;
+  --color-gold: #ffc632;
+  --color-blue: #005ddb;
+  --color-gunmetal: #8993a3;
+  --color-ink: #101014;
+  --color-purple: #b52ad8;
+  --color-line: rgb(137 147 163 / 0.35);
+
+  --font-display: var(--font-anton), Impact, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-pixel: var(--font-pixelify), ui-monospace, monospace;
+  --font-note: var(--font-caveat), cursive;
+
+  --radius-card: 12px;
+  --shadow-hard: 4px 4px 0 #101014;
+}
+
+@layer base {
+  html {
+    background: var(--color-navy);
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+  body {
+    margin: 0;
+    background: var(--color-navy);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: inherit;
+  }
+  a:hover {
+    color: var(--color-gold);
+  }
+  ::placeholder {
+    color: var(--color-gunmetal);
+    opacity: 1;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .p3d {
+    transform-style: preserve-3d;
+  }
+  /* Esquina escalonada: solo en Panel */
+  .notch {
+    clip-path: polygon(0 4px, 4px 4px, 4px 0, calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px));
+  }
+  .lift {
+    transition: transform 0.15s ease;
+  }
+  .lift:hover {
+    transform: translateY(-4px);
+  }
+  .ec-tile {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent), linear-gradient(180deg, transparent, #000 6%, #000 94%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent), linear-gradient(180deg, transparent, #000 6%, #000 94%, transparent);
+    mask-composite: intersect;
+  }
+  .sr-only-focusable:not(:focus) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+@keyframes ecPulse {
+  0%, 100% { box-shadow: 4px 4px 0 #101014, 0 0 0 0 rgb(255 198 50 / 0); }
+  50% { box-shadow: 4px 4px 0 #101014, 0 0 0 4px rgb(255 198 50 / 0.35); }
+}
+@keyframes ecSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes ecRow { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes ecHint { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+.ec-combo-btn { animation: ecPulse 2.6s ease-in-out infinite; transition: transform 0.15s ease; }
+.ec-combo-btn:hover { transform: translate(-2px, -2px); color: var(--color-cream); }
+.ec-spin { animation: ecSpin 48s linear infinite; }
+.ec-row { animation: ecRow 60s linear infinite; }
+.ec-hint { animation: ecHint 1.6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ec-combo-btn, .ec-spin, .ec-row, .ec-hint { animation: none; }
+  .lift, .lift:hover { transition: none; transform: none; }
+}
+
+/* Escenarios con scroll del Inicio */
+.ec-intro { height: 520vh; }
+.ec-uni { height: 280vh; }
+.ec-stage { height: 100vh; height: 100svh; }
+.ec-wheelbox { height: min(640px, 80vh); }
+.ec-filabox { height: 820px; }
+@media (max-width: 760px) {
+  .ec-intro { height: 420vh; }
+  .ec-uni { height: 220vh; }
+  .ec-wheelbox { height: 46vh; height: 46svh; }
+  .ec-filabox { height: 560px; }
+  .ec-filatrack { zoom: 0.6; top: 80px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ec-intro, .ec-uni { height: auto; }
+}
