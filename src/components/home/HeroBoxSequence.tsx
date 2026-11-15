@@ -61,7 +61,6 @@ export function HeroBoxSequence() {
     }
     window.addEventListener('load', start, { once: true });
     return () => window.removeEventListener('load', start);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useScrollFrame(() => {

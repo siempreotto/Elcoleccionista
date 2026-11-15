@@ -23,6 +23,7 @@ export function productCardView(p: Product): CardView {
     detail: p.short_detail,
     price: p.published ? formatQ(p.price_gtq) : '',
     contain: box,
+    emptyLetter: p.combo_category ?? undefined,
   };
 }
 
