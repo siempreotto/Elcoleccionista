@@ -2,13 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { breadcrumbJsonLd, JsonLd } from '@/components/seo/JsonLd';
-import { AddToCartButton } from '@/components/shop/AddToCartButton';
 import { FiltersToggle } from '@/components/shop/FiltersToggle';
 import { ProductCard, type CardView } from '@/components/shop/ProductCard';
+import { WhatsAppBuyButton } from '@/components/shop/WhatsAppBuyButton';
 import { COMPETITION_LABEL, getCatalog, inStock, isBox } from '@/lib/catalog';
 import { formatQ } from '@/lib/format';
 import { comboPrice, comboSavings } from '@/lib/pricing';
 import { productCardView, surpriseCardView } from '@/lib/views';
+import { productLabel, surpriseLabel } from '@/lib/whatsapp';
 
 export const metadata: Metadata = {
   title: 'Tienda: tarjetas de fútbol, cajas selladas y combos',
@@ -48,8 +49,7 @@ type Item = {
   competition: string | null;
   available: boolean;
   search: string;
-  action?: { kind: 'product'; productId: string } | { kind: 'surprise'; category: string };
-  maxQty?: number;
+  buy?: string;
 };
 
 type SP = Record<string, string | string[] | undefined>;
@@ -109,8 +109,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
       competition: null,
       available: anyAvailable,
       search: `tarjeta sorpresa categoria ${c.id} numerada patch firma rookie paralela insert`,
-      action: { kind: 'surprise', category: c.id },
-      maxQty: c.stock ?? 20,
+      buy: surpriseLabel(c.id, c.card_alone),
     });
   });
   products.forEach((p) => {
@@ -127,8 +126,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
       competition: p.competition,
       available: inStock(p),
       search: norm(`${p.name} ${p.short_detail} ${p.tags.join(' ')} ${p.seo_title}`),
-      action: { kind: 'product', productId: p.id },
-      maxQty: p.stock ?? 20,
+      buy: productLabel(p),
     });
   });
 
@@ -287,8 +285,8 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
                 {shown.map((it, i) => (
                   <li key={it.key} id={it.kind === 'sorpresa' ? `sorpresa-${it.category}` : undefined} className="flex flex-col gap-3">
                     <ProductCard v={it.kind === 'sorpresa' ? { ...it.view, href: null } : it.view} priority={i < 3} />
-                    {it.action && it.kind !== 'suelta' && (
-                      <AddToCartButton item={it.action} disabled={!it.available} maxQty={it.maxQty} />
+                    {it.buy && it.kind !== 'suelta' && (
+                      <WhatsAppBuyButton phone={settings.whatsapp} product={it.buy} disabled={!it.available} />
                     )}
                   </li>
                 ))}

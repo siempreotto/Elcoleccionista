@@ -1,11 +1,11 @@
 'use client';
-import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { cart } from '@/lib/cart/store';
 import { formatQ } from '@/lib/format';
 import { comboPrice, comboSavings, separatePrice, type PricingCategory, type PricingSettings } from '@/lib/pricing';
 import type { BoxLite } from '@/lib/views';
 import { HandNote } from '@/components/ui';
+import { WhatsAppBuyButton } from '@/components/shop/WhatsAppBuyButton';
+import { comboLabel } from '@/lib/whatsapp';
 import { optimized } from '@/lib/images';
 
 export const COMBO_EVENT = 'ec:combo-select';
@@ -14,11 +14,10 @@ export type ComboSelectDetail = { boxId: string; category: string };
 type Cat = PricingCategory & { blurb: string; stock: number | null };
 
 /** Selector en 2 pasos: caja (value o mega) y categoría (C, B, A, AAA). */
-export function ComboSelector({ boxes, categories, settings }: { boxes: BoxLite[]; categories: Cat[]; settings: PricingSettings }) {
+export function ComboSelector({ boxes, categories, settings, whatsapp }: { boxes: BoxLite[]; categories: Cat[]; settings: PricingSettings; whatsapp: string | null }) {
   const defaultBox = Math.min(2, Math.max(0, boxes.length - 1));
   const [boxIdx, setBoxIdx] = useState(defaultBox);
   const [catId, setCatId] = useState(categories.find((c) => c.id === 'A')?.id ?? categories[0]?.id ?? 'C');
-  const [added, setAdded] = useState(false);
 
   useEffect(() => {
     const onSelect = (e: Event) => {
@@ -26,7 +25,6 @@ export function ComboSelector({ boxes, categories, settings }: { boxes: BoxLite[
       const i = boxes.findIndex((b) => b.id === d.boxId);
       if (i >= 0) setBoxIdx(i);
       setCatId(d.category);
-      setAdded(false);
     };
     window.addEventListener(COMBO_EVENT, onSelect);
     return () => window.removeEventListener(COMBO_EVENT, onSelect);
@@ -66,10 +64,7 @@ export function ComboSelector({ boxes, categories, settings }: { boxes: BoxLite[
                   role="radio"
                   aria-checked={on}
                   aria-label={`${b.name} · ${b.type === 'value_box' ? 'Value box' : 'Mega box'}`}
-                  onClick={() => {
-                    setBoxIdx(i);
-                    setAdded(false);
-                  }}
+                  onClick={() => setBoxIdx(i)}
                   className={`flex min-h-20 cursor-pointer items-center justify-center rounded-none p-2 ${on ? 'border-2 border-cream bg-surface' : 'border border-gunmetal/50 bg-transparent'}`}
                 >
                   {b.img && (
@@ -98,10 +93,7 @@ export function ComboSelector({ boxes, categories, settings }: { boxes: BoxLite[
                   role="radio"
                   aria-checked={on}
                   aria-label={`Categoría ${c.id}, combo ${formatQ(comboPrice(box.type, c, settings))}`}
-                  onClick={() => {
-                    setCatId(c.id);
-                    setAdded(false);
-                  }}
+                  onClick={() => setCatId(c.id)}
                   className={`flex min-h-[72px] cursor-pointer flex-col items-center justify-center gap-0.5 rounded-none px-1 py-2 ${on ? 'border-2 border-cream bg-cream text-navy' : 'border border-gunmetal/50 bg-transparent text-cream'}`}
                 >
                   <span className="font-display text-[26px] leading-none">{c.id}</span>
@@ -122,26 +114,17 @@ export function ComboSelector({ boxes, categories, settings }: { boxes: BoxLite[
               AHORRAS {formatQ(comboSavings(box.type, cat, settings))}
             </span>
           </div>
-          <button
-            type="button"
-            disabled={soldOut}
-            onClick={() => {
-              cart.add({ kind: 'combo', boxProductId: box.id, category: cat.id });
-              setAdded(true);
-            }}
-            className="h-[60px] max-w-[280px] flex-[1_1_200px] cursor-pointer rounded-none border-0 bg-cream font-display text-[22px] uppercase tracking-[0.02em] text-navy shadow-hard disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {soldOut ? 'Agotado' : 'Agregar combo'}
-          </button>
+          <div className="max-w-[280px] flex-[1_1_200px]">
+            <WhatsAppBuyButton
+              phone={whatsapp}
+              product={comboLabel(box.name, box.type, cat.id, price)}
+              disabled={soldOut}
+              label="Pedir combo"
+              size="lg"
+            />
+          </div>
         </div>
-        <div aria-live="polite">
-          {added && (
-            <div role="status" className="flex items-center justify-between gap-4 border border-gunmetal/50 bg-surface px-4 py-3.5">
-              <span className="text-[15px] font-semibold">Listo. Tu combo ya está en el carrito.</span>
-              <Link href="/carrito" className="text-sm font-semibold">Ver carrito</Link>
-            </div>
-          )}
-        </div>
+        <p className="m-0 text-sm text-gunmetal">Se abre WhatsApp con tu combo listo para enviar.</p>
       </div>
     </div>
   );

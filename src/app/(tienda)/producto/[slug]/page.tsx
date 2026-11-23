@@ -5,13 +5,14 @@ import { SiteHeader } from '@/components/layout/SiteHeader';
 import { BoxComboPicker } from '@/components/product/BoxComboPicker';
 import { CardGallery } from '@/components/product/CardGallery';
 import { breadcrumbJsonLd, JsonLd, productJsonLd } from '@/components/seo/JsonLd';
-import { AddToCartButton } from '@/components/shop/AddToCartButton';
+import { WhatsAppBuyButton } from '@/components/shop/WhatsAppBuyButton';
 import { ProductCard } from '@/components/shop/ProductCard';
 import { HandNote, Label, RarityBadge } from '@/components/ui';
 import { COMPETITION_LABEL, getCatalog, getProductBySlug, inStock, isBox, specsOf, TYPE_LABEL } from '@/lib/catalog';
 import { SITE_URL } from '@/lib/env';
 import { formatQ } from '@/lib/format';
 import { productCardView, rarityOf } from '@/lib/views';
+import { productLabel } from '@/lib/whatsapp';
 
 export const revalidate = 300;
 
@@ -44,9 +45,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const available = inStock(p);
   const specs = specsOf(p);
   const rarity = box ? null : rarityOf(p);
-  const wa = settings.whatsapp
-    ? `https://wa.me/${settings.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(`Hola, me interesa ${p.name} (${p.short_detail}) que vi en elcoleccionista.shop/producto/${p.slug}`)}`
-    : null;
   const related = products.filter((x) => x.id !== p.id && x.type === p.type).slice(0, 4);
   const pricing = { value_box_price: settings.value_box_price, mega_box_price: settings.mega_box_price, mega_combo_mode: settings.mega_combo_mode };
   const section = box ? { name: 'Cajas selladas', path: '/tienda?tipo=sellado' } : { name: 'Tarjetas sueltas', path: '/tienda?tipo=suelta' };
@@ -90,18 +88,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               )}
             </div>
             <div className="flex max-w-[420px] flex-col gap-3">
-              <AddToCartButton
-                item={{ kind: 'product', productId: p.id }}
+              <WhatsAppBuyButton
+                phone={settings.whatsapp}
+                product={productLabel(p)}
                 disabled={!available}
-                label="Agregar al carrito"
+                label="Comprar por WhatsApp"
                 size="lg"
-                maxQty={p.stock ?? 20}
               />
-              {wa && (
-                <a href={wa} rel="noopener" className="inline-flex min-h-11 items-center justify-center border border-cream/50 px-5 text-sm font-semibold no-underline">
-                  {box ? 'Pregúntanos por esta caja' : 'Pregúntanos por esta tarjeta'}
-                </a>
-              )}
+              <p className="m-0 text-sm text-gunmetal">Se abre WhatsApp con tu mensaje listo para enviar. Ahí coordinamos pago y entrega.</p>
             </div>
 
             {box && p.packs && p.cards_per_pack && (
@@ -120,7 +114,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             )}
 
             {box && categories.length > 0 && (
-              <BoxComboPicker boxId={p.id} boxType={p.type} categories={categories} settings={pricing} disabled={!available} />
+              <BoxComboPicker boxName={p.name} boxType={p.type} categories={categories} settings={pricing} disabled={!available} whatsapp={settings.whatsapp} />
             )}
 
             {specs.length > 0 && (
