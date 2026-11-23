@@ -8,13 +8,14 @@ import { GlossaryGuide, HowWeWork, InstagramBlock, VendingSection } from '@/comp
 import { UniverseWheel, type ShowcaseCard } from '@/components/home/UniverseWheel';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { JsonLd, organizationJsonLd, websiteJsonLd } from '@/components/seo/JsonLd';
-import { AddToCartButton } from '@/components/shop/AddToCartButton';
+import { WhatsAppBuyButton } from '@/components/shop/WhatsAppBuyButton';
 import { ProductCard } from '@/components/shop/ProductCard';
 import { ArrowIcon, Label, PixelLabel, RarityBadge, SectionTitle } from '@/components/ui';
 import { getCatalog, isBox } from '@/lib/catalog';
 import { formatQ } from '@/lib/format';
 import { comboPrice } from '@/lib/pricing';
 import { productCardView, toBoxLite } from '@/lib/views';
+import { productLabel } from '@/lib/whatsapp';
 
 export const revalidate = 300;
 
@@ -93,7 +94,7 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              <ComboSelector boxes={boxes} categories={categories} settings={pricing} />
+              <ComboSelector boxes={boxes} categories={categories} settings={pricing} whatsapp={settings.whatsapp} />
 
               <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">
                 {categories.map((c) => (
@@ -147,7 +148,7 @@ export default async function HomePage() {
                   </div>
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <span className="pt-2 font-display text-[28px] leading-none">{formatQ(b.price)}</span>
-                    <AddToCartButton item={{ kind: 'product', productId: b.id }} disabled={!b.available} />
+                    <WhatsAppBuyButton phone={settings.whatsapp} product={productLabel(b)} disabled={!b.available} />
                   </div>
                   {cheapest && <ComboCTA boxId={b.id} from={formatQ(comboPrice(b.type, cheapest, pricing))} />}
                 </article>

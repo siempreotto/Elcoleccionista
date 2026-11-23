@@ -23,7 +23,7 @@ export function SiteFooter({ instagram, whatsapp }: { instagram: string; whatsap
         </nav>
         <nav aria-label="Ayuda" className="flex flex-[1_1_160px] flex-col gap-2.5 text-sm">
           <span className={head}>AYUDA</span>
-          <Link href="/carrito#entrega">Envíos y entregas</Link>
+          {wa && <a href={`${wa}?text=${encodeURIComponent("Hola Otto, ¿cómo funcionan los envíos y entregas?")}`}>Envíos y entregas</a>}
           <Link href="/#aprende">Guía para empezar</Link>
           {wa ? <a href={wa}>Contacto por WhatsApp</a> : <a href={ig}>Contacto</a>}
         </nav>

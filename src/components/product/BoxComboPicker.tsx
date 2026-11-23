@@ -1,16 +1,15 @@
 'use client';
-import Link from 'next/link';
 import { useState } from 'react';
-import { cart } from '@/lib/cart/store';
 import { formatQ } from '@/lib/format';
 import { comboPrice, comboSavings, type BoxType, type PricingCategory, type PricingSettings } from '@/lib/pricing';
+import { comboLabel } from '@/lib/whatsapp';
+import { WhatsAppBuyButton } from '@/components/shop/WhatsAppBuyButton';
 
 type Cat = PricingCategory & { blurb: string; stock: number | null };
 
 /** CTA de combo en la ficha de una caja: elige categoría y agrega caja + tarjeta sorpresa. */
-export function BoxComboPicker({ boxId, boxType, categories, settings, disabled }: { boxId: string; boxType: BoxType; categories: Cat[]; settings: PricingSettings; disabled: boolean }) {
+export function BoxComboPicker({ boxName, boxType, categories, settings, disabled, whatsapp }: { boxName: string; boxType: BoxType; categories: Cat[]; settings: PricingSettings; disabled: boolean; whatsapp: string | null }) {
   const [cat, setCat] = useState(categories[0]?.id ?? 'C');
-  const [added, setAdded] = useState(false);
   const c = categories.find((x) => x.id === cat) ?? categories[0];
   if (!c) return null;
   return (
@@ -32,10 +31,7 @@ export function BoxComboPicker({ boxId, boxType, categories, settings, disabled 
               type="button"
               role="radio"
               aria-checked={on}
-              onClick={() => {
-                setCat(x.id);
-                setAdded(false);
-              }}
+              onClick={() => setCat(x.id)}
               className={`flex min-h-16 cursor-pointer flex-col items-center justify-center rounded-none px-1 ${on ? 'border-2 border-cream bg-cream text-navy' : 'border border-cream/50 bg-transparent text-cream'}`}
             >
               <span className="font-display text-2xl leading-none">{x.id}</span>
@@ -45,24 +41,13 @@ export function BoxComboPicker({ boxId, boxType, categories, settings, disabled 
         })}
       </div>
       <span className="text-sm">{c.blurb}</span>
-      <button
-        type="button"
+      <WhatsAppBuyButton
+        phone={whatsapp}
+        product={comboLabel(boxName, boxType, c.id, comboPrice(boxType, c, settings))}
         disabled={disabled || c.stock === 0}
-        onClick={() => {
-          cart.add({ kind: 'combo', boxProductId: boxId, category: c.id });
-          setAdded(true);
-        }}
-        className="h-14 cursor-pointer rounded-none border-0 bg-cream font-display text-xl uppercase text-navy shadow-hard disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        Agregar combo · {formatQ(comboPrice(boxType, c, settings))}
-      </button>
-      <span aria-live="polite" className="text-sm">
-        {added && (
-          <>
-            Listo, tu combo está en el carrito. <Link href="/carrito" className="font-semibold text-cream">Ver carrito</Link>
-          </>
-        )}
-      </span>
+        label={`Pedir combo · ${formatQ(comboPrice(boxType, c, settings))}`}
+        size="lg"
+      />
     </div>
   );
 }

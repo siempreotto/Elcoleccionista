@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CartButton } from './CartButton';
 
 /** Barra fija. En el Inicio flota sobre la animación; en las demás páginas tiene fondo. */
 export function SiteHeader({ floating = false }: { floating?: boolean }) {
@@ -30,7 +29,6 @@ export function SiteHeader({ floating = false }: { floating?: boolean }) {
         >
           Tienda
         </Link>
-        <CartButton />
       </nav>
     </header>
   );
